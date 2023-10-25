@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:21:53 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/10/25 15:39:43 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/10/25 16:23:41 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 # include <errno.h>     // perror
 
 // PARSING FUNCTIONS
-int ft_parse(int ac, char **av);
+int	ft_parse(int ac, char **av);
 int	argument_check(int ac, char **av);
 
 #endif
