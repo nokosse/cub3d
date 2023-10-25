@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parsing_main.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/25 13:09:34 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/10/25 14:46:54 by kvisouth         ###   ########.fr       */
+/*   Created: 2023/10/25 15:27:14 by kvisouth          #+#    #+#             */
+/*   Updated: 2023/10/25 15:28:53 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-int	main(int ac, char **av)
+int	ft_parse(int ac, char **av)
 {
-	if (ft_parse(ac, av) == 0)
+	if (argument_check(ac, av) == 0)
 		return (0);
-	return (0);
+	return (1);
 }

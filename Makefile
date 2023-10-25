@@ -6,13 +6,15 @@
 #    By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/07 12:36:43 by kvisouth          #+#    #+#              #
-#    Updated: 2023/10/25 14:29:11 by kvisouth         ###   ########.fr        #
+#    Updated: 2023/10/25 15:40:23 by kvisouth         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
 
-SRCS = ../main.c \
+SRCS =	main.c \
+		parsing_main.c \
+		parsing_argument.c \
 
 OBJS = $(addprefix obj/, $(notdir $(SRCS:.c=.o)))
 
