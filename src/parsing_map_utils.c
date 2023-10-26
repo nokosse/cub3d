@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_main.c                                     :+:      :+:    :+:   */
+/*   parsing_map_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/25 15:27:14 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/10/26 18:14:59 by kvisouth         ###   ########.fr       */
+/*   Created: 2023/10/26 18:00:24 by kvisouth          #+#    #+#             */
+/*   Updated: 2023/10/26 18:00:30 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-// argument_check will check if the argument seems valid.
-// parse_map_info will parse the map info such as NO, SO, WE, EA, F, C.
-// parse_map will parse the map itself (the 1, 0, N, S, E, W).
-int	ft_parse(int ac, char **av, t_game *game)
+void	skip_lines(int fd)
 {
-	if (argument_check(ac, av) == 0)
-		return (0);
-	game->map_name = av[1];
-	if (parse_map_info(game) == 0)
-		return (0);
-	return (1);
+	while (get_next_line(fd) != NULL)
+		;
+}
+
+void	skip_spaces_tabs(char *line, int *i)
+{
+	while (line[*i] == ' ' || line[*i] == '\t')
+		(*i)++;
 }

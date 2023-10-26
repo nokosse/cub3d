@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:21:53 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/10/26 16:48:16 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/10/26 18:02:22 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,10 @@
 # include <errno.h>     // perror
 
 // PARSING FUNCTIONS
-int	ft_parse(int ac, char **av, t_game *game);
-int	argument_check(int ac, char **av);
-int	parse_map_info(t_game *game);
+int		ft_parse(int ac, char **av, t_game *game);
+int		argument_check(int ac, char **av);
+int		parse_map_info(t_game *game);
+void	skip_lines(int fd);
+void	skip_spaces_tabs(char *line, int *i);
 
 #endif

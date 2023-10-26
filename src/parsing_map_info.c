@@ -6,54 +6,22 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 16:28:34 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/10/26 17:32:39 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/10/26 18:15:41 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-// Reminder :
-// GNL is a function that reads a file line by line.
-// We read the file until we find a \n or the end of the file.
-// And we return the line we just read.
-// It returns NULL if there is nothing to read.
-
-// This function uses GNL in a loop until the end of the file.
-// We use it to avoid still reachable leaks.
-void	skip_lines(int fd)
-{
-	while (get_next_line(fd) != NULL)
-		;
-}
-
-void	skip_spaces_tabs(char *line, int *i)
-{
-	while (line[*i] == ' ' || line[*i] == '\t')
-		(*i)++;
-}
-
 void	store_elem(char	*path, t_game *game, char *elem)
 {
 	if (elem[0] == 'N' && elem[1] == 'O')
-	{
 		game->no = path;
-		printf("stored in game->no : %s\n", game->no);
-	}
 	else if (elem[0] == 'S' && elem[1] == 'O')
-	{
 		game->so = path;
-		printf("stored in game->so : %s\n", game->so);
-	}
 	else if (elem[0] == 'W' && elem[1] == 'E')
-	{
 		game->we = path;
-		printf("stored in game->we : %s\n", game->we);
-	}
 	else if (elem[0] == 'E' && elem[1] == 'A')
-	{
 		game->ea = path;
-		printf("stored in game->ea : %s\n", game->ea);
-	}
 }
 
 // This function will store the string (elem) in t_game.
@@ -65,7 +33,7 @@ int	get_path(char *str, t_game *game, char *elem)
 	char	*path_cpy;
 
 	i = 0;
-		while (str[i] != ' ' && str[i] != '\t' && str[i] != '\n' && str[i] != '\0')
+	while (str[i] != ' ' && str[i] != '\t' && str[i] != '\n' && str[i] != '\0')
 		i++;
 	path = malloc(sizeof(char) * (i + 1));
 	if (path == NULL)
@@ -78,15 +46,31 @@ int	get_path(char *str, t_game *game, char *elem)
 	}
 	path[i] = '\0';
 	path_cpy = ft_strdup(path);
-	store_elem(path_cpy, game, elem);
 	free(path);
+	store_elem(path_cpy, game, elem);
 	return (1);
 }
 
-// This function will search for 'elem' (it will be NO, SO, WE, EA)
+int	process_element(char *line, t_game *game, char *elem, int *i)
+{
+	skip_spaces_tabs(line, i);
+	if (line[*i] == elem[0] && line[*i + 1] == elem[1])
+	{
+		*i += 2;
+		skip_spaces_tabs(line, i);
+		if (line[*i] == '\0' || line[*i] == '\n')
+			return (0);
+		if (get_path(&line[*i], game, elem) == 0)
+			return (0);
+		return (1);
+	}
+	return (0);
+}
+
 int	search_elem(int fd, char *elem, t_game *game)
 {
 	char	*line;
+	int		result;
 	int		i;
 
 	line = NULL;
@@ -96,18 +80,10 @@ int	search_elem(int fd, char *elem, t_game *game)
 		return (0);
 	while (line != NULL)
 	{
-		skip_spaces_tabs(line, &i);
-		if (line[i] == elem[0] && line[i + 1] == elem[1])
-		{
-			i += 2;
-			skip_spaces_tabs(line, &i);
-			if (line[i] == '\0' || line[i] == '\n')
-				return (0);
-			get_path(&line[i], game, elem);
-			free(line);
-			return (1);
-		}
+		result = process_element(line, game, elem, &i);
 		free(line);
+		if (result)
+			return (1);
 		line = get_next_line(fd);
 		if (line == NULL)
 			break ;

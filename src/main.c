@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:09:34 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/10/26 16:59:19 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/10/26 18:00:44 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ int	main(int ac, char **av)
 	printf("game->so : %s\n", game.so);
 	printf("game->we : %s\n", game.we);
 	printf("game->ea : %s\n", game.ea);
-	// init t_game once parsing is all good
+	free(game.no);
+	free(game.so);
+	free(game.we);
+	free(game.ea);
 	return (0);
 }
