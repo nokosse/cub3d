@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:30:41 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/10/25 16:25:17 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/10/26 14:43:30 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,14 @@ typedef struct s_rgb
 	int		b;
 }				t_rgb;
 
+// t_player contains all the informations about the player.
+typedef struct s_player
+{
+	int		pos_x;
+	int		pos_y;
+	char	orient;
+}				t_player;
+
 // t_map contains all the informations about the map.
 // (The map is all the 1, 0 and N S E or W)
 typedef struct s_map
@@ -45,14 +53,6 @@ typedef struct s_map
 	int			map_height;
 	t_player	player;
 }				t_map;
-
-// t_player contains all the informations about the player.
-typedef struct s_player
-{
-	int		pos_x;
-	int		pos_y;
-	char	orient;
-}				t_player;
 
 // t_game is the main strucure.
 // it includes all the others structures.
