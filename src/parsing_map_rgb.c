@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 09:31:13 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/10/27 15:38:02 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/10/27 15:45:07 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,13 @@ int	check_rgb_ints(t_game *game, char *elem)
 	return (1);
 }
 
-int	split_and_check_ints(char *path, int flag, t_game *game, char *elem)
+int	split_and_check_ints(char *path, int i, t_game *game, char *elem)
 {
-	int		i;
+	int		flag;	
 	char	*rgb;
 	char	**rgb_split;
 
+	flag = i;
 	rgb = malloc(sizeof(char) * (flag + 1));
 	if (rgb == NULL)
 		return (0);
@@ -86,7 +87,6 @@ int	split_and_check_ints(char *path, int flag, t_game *game, char *elem)
 int	parse_rgb(char *path, t_game *game, char *elem)
 {
 	int		i;
-	int		flag;
 
 	i = 0;
 	while (ft_isdigit(path[i]) == 1)
@@ -107,8 +107,7 @@ int	parse_rgb(char *path, t_game *game, char *elem)
 		i++;
 	if (path[i] != '\0' && path[i] != '\n' && path[i] != ' ' && path[i] != '\t')
 		return (0);
-	flag = i;
-	if (split_and_check_ints(path, flag, game, elem) == 0)
+	if (split_and_check_ints(path, i, game, elem) == 0)
 		return (0);
 	return (1);
 }
@@ -137,7 +136,10 @@ static int	get_path(char *str, t_game *game, char *elem)
 	path_cpy = ft_strdup(path);
 	free(path);
 	if (parse_rgb(path_cpy, game, elem) == 0)
+	{
+		free(path_cpy);
 		return (0);
+	}
 	free(path_cpy);
 	return (1);
 }
