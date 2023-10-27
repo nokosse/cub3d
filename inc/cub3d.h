@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:21:53 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/10/26 18:02:22 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/10/27 11:04:14 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,8 @@ int		argument_check(int ac, char **av);
 int		parse_map_info(t_game *game);
 void	skip_lines(int fd);
 void	skip_spaces_tabs(char *line, int *i);
+int		search_rgb(int fd, char *elem, t_game *game);
+int		get_path(char *str, t_game *game, char *elem);
+int		parse_rgb(char *path, t_game *game, char *elem);
 
 #endif
