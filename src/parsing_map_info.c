@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 16:28:34 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/10/27 14:30:32 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/10/27 16:55:37 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ int	search_elem(int fd, char *elem, t_game *game)
 // Then it will use a loop with GNL again until the end of the file to avoid
 // still reachable leaks.
 // Then we do the same for  SO, WE, EA.
+
 int	parse_map_info(t_game *game)
 {
 	int		fd;
@@ -130,6 +131,7 @@ int	parse_map_info(t_game *game)
 		return (close(fd), 0);
 	if (search_rgb(fd, "C", game) == 0)
 		return (close(fd), 0);
+	skip_lines_end(fd);
 	close(fd);
 	return (1);
 }

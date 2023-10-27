@@ -6,54 +6,11 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 09:31:13 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/10/27 15:45:07 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/10/27 16:33:19 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
-
-void	store_rgb(t_game *game, char *elem, char **rgb_split)
-{
-	if (elem[0] == 'F')
-	{
-		game->floor.r = ft_atoi(rgb_split[0]);
-		game->floor.g = ft_atoi(rgb_split[1]);
-		game->floor.b = ft_atoi(rgb_split[2]);
-	}
-	else if (elem[0] == 'C')
-	{
-		game->ceil.r = ft_atoi(rgb_split[0]);
-		game->ceil.g = ft_atoi(rgb_split[1]);
-		game->ceil.b = ft_atoi(rgb_split[2]);
-	}
-	free(rgb_split[0]);
-	free(rgb_split[1]);
-	free(rgb_split[2]);
-	free(rgb_split);
-}
-
-int	check_rgb_ints(t_game *game, char *elem)
-{
-	if (elem[0] == 'F')
-	{
-		if (game->floor.r < 0 || game->floor.r > 255)
-			return (0);
-		if (game->floor.g < 0 || game->floor.g > 255)
-			return (0);
-		if (game->floor.b < 0 || game->floor.b > 255)
-			return (0);
-	}
-	else if (elem[0] == 'C')
-	{
-		if (game->ceil.r < 0 || game->ceil.r > 255)
-			return (0);
-		if (game->ceil.g < 0 || game->ceil.g > 255)
-			return (0);
-		if (game->ceil.b < 0 || game->ceil.b > 255)
-			return (0);
-	}
-	return (1);
-}
 
 int	split_and_check_ints(char *path, int i, t_game *game, char *elem)
 {
@@ -136,10 +93,7 @@ static int	get_path(char *str, t_game *game, char *elem)
 	path_cpy = ft_strdup(path);
 	free(path);
 	if (parse_rgb(path_cpy, game, elem) == 0)
-	{
-		free(path_cpy);
-		return (0);
-	}
+		return (free(path_cpy), 0);
 	free(path_cpy);
 	return (1);
 }
@@ -149,6 +103,8 @@ static int	get_path(char *str, t_game *game, char *elem)
 // elements (F and C).
 static int	process_element(char *line, t_game *game, char *elem, int *i)
 {
+	if (line == NULL)
+		return (0);
 	skip_spaces_tabs(line, i);
 	if (line[*i] == elem[0] && (line[*i + 1] == ' ' || line[*i + 1] == '\t'))
 	{
