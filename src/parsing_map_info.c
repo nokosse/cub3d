@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 16:28:34 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/10/27 11:03:33 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/10/27 14:30:32 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	store_elem(char	*path, t_game *game, char *elem)
 
 // This function will store the string (elem) in t_game.
 // It will store every character until it encounters a space, tab, \n or \0.
-int	get_path(char *str, t_game *game, char *elem)
+static int	get_path(char *str, t_game *game, char *elem)
 {
 	int		i;
 	char	*path;
@@ -119,17 +119,17 @@ int	parse_map_info(t_game *game)
 	if (fd == -1)
 		return (0);
 	if (search_elem(fd, "NO", game) == 0)
-		return (0);
+		return (close(fd), 0);
 	if (search_elem(fd, "SO", game) == 0)
-		return (0);
+		return (close(fd), 0);
 	if (search_elem(fd, "WE", game) == 0)
-		return (0);
+		return (close(fd), 0);
 	if (search_elem(fd, "EA", game) == 0)
-		return (0);
+		return (close(fd), 0);
 	if (search_rgb(fd, "F", game) == 0)
-		return (0);
+		return (close(fd), 0);
 	if (search_rgb(fd, "C", game) == 0)
-		return (0);
+		return (close(fd), 0);
 	close(fd);
 	return (1);
 }

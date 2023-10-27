@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:09:34 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/10/27 10:00:37 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/10/27 14:29:27 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ int	main(int ac, char **av)
 	printf("game->so : %s\n", game.so);
 	printf("game->we : %s\n", game.we);
 	printf("game->ea : %s\n", game.ea);
-	// printf("game->floor : %d, %d, %d\n", game.floor.r, game.floor.g, game.floor.b);
+	printf("game->floor : %d, %d, %d\n", game.floor.r, game.floor.g, game.floor.b);
+	printf("game->ceil : %d, %d, %d\n", game.ceil.r, game.ceil.g, game.ceil.b);
 	free(game.no);
 	free(game.so);
 	free(game.we);
 	free(game.ea);
-	// free(game.floor);
 	return (0);
 }
