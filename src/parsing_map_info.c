@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 16:28:34 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/10/26 18:15:41 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/10/27 11:03:33 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	store_elem(char	*path, t_game *game, char *elem)
 		game->we = path;
 	else if (elem[0] == 'E' && elem[1] == 'A')
 		game->ea = path;
+	else if (elem[0] == 'F' || elem[0] == 'C')
+		parse_rgb(path, game, elem);
 }
 
 // This function will store the string (elem) in t_game.
@@ -51,7 +53,7 @@ int	get_path(char *str, t_game *game, char *elem)
 	return (1);
 }
 
-int	process_element(char *line, t_game *game, char *elem, int *i)
+static int	process_element(char *line, t_game *game, char *elem, int *i)
 {
 	skip_spaces_tabs(line, i);
 	if (line[*i] == elem[0] && line[*i + 1] == elem[1])
@@ -82,7 +84,7 @@ int	search_elem(int fd, char *elem, t_game *game)
 	{
 		result = process_element(line, game, elem, &i);
 		free(line);
-		if (result)
+		if (result == 1)
 			return (1);
 		line = get_next_line(fd);
 		if (line == NULL)
@@ -123,6 +125,10 @@ int	parse_map_info(t_game *game)
 	if (search_elem(fd, "WE", game) == 0)
 		return (0);
 	if (search_elem(fd, "EA", game) == 0)
+		return (0);
+	if (search_rgb(fd, "F", game) == 0)
+		return (0);
+	if (search_rgb(fd, "C", game) == 0)
 		return (0);
 	close(fd);
 	return (1);
