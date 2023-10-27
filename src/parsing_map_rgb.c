@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 09:31:13 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/10/27 14:43:03 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/10/27 15:38:02 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,8 @@ int	parse_rgb(char *path, t_game *game, char *elem)
 		return (0);
 	while (ft_isdigit(path[i]) == 1)
 		i++;
+	if (path[i] != '\0' && path[i] != '\n' && path[i] != ' ' && path[i] != '\t')
+		return (0);
 	flag = i;
 	if (split_and_check_ints(path, flag, game, elem) == 0)
 		return (0);
