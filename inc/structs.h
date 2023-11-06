@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:30:41 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/10/26 14:43:30 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/06 14:23:46 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef struct s_map
 typedef struct s_game
 {
 	char		*map_name;
+	char		**file_cont;
 	char		*no;
 	char		*so;
 	char		*we;

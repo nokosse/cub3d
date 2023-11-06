@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:09:34 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/10/27 16:41:10 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/06 17:26:02 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,26 +18,9 @@ int	main(int ac, char **av)
 
 	if (ft_parse(ac, av, &game) == 0)
 	{
-		if (game.no != NULL)
-			free(game.no);
-		if (game.so != NULL)
-			free(game.so);
-		if (game.we != NULL)
-			free(game.we);
-		if (game.ea != NULL)
-			free(game.ea);
+		printf("Error in parsing\n");
 		return (0);
 	}
-	printf("The parsing is all good !\n");
-	printf("game->no : %s\n", game.no);
-	printf("game->so : %s\n", game.so);
-	printf("game->we : %s\n", game.we);
-	printf("game->ea : %s\n", game.ea);
-	printf("game->floor : %d, %d, %d\n", game.floor.r, game.floor.g, game.floor.b);
-	printf("game->ceil : %d, %d, %d\n", game.ceil.r, game.ceil.g, game.ceil.b);
-	free(game.no);
-	free(game.so);
-	free(game.we);
-	free(game.ea);
+	printf("Parsing OK\n");
 	return (0);
 }
