@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:09:34 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/06 17:26:02 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/07 16:23:07 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,13 @@ int	main(int ac, char **av)
 		return (0);
 	}
 	printf("Parsing OK\n");
+	printf("NO = %s\n", game.no);
+	printf("SO = %s\n", game.so);
+	printf("WE = %s\n", game.we);
+	printf("EA = %s\n", game.ea);
+	free(game.no);
+	free(game.so);
+	free(game.we);
+	free(game.ea);
 	return (0);
 }

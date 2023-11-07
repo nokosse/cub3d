@@ -6,23 +6,51 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 16:28:34 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/06 17:51:14 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/07 16:22:23 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
+void	store_path(char *path, t_game *game, char *elem)
+{
+	if (elem[0] == 'N' && elem[1] == 'O')
+		game->no = path;
+	else if (elem[0] == 'S' && elem[1] == 'O')
+		game->so = path;
+	else if (elem[0] == 'W' && elem[1] == 'E')
+		game->we = path;
+	else if (elem[0] == 'E' && elem[1] == 'A')
+		game->ea = path;
+}
+
 int	parse_path(char *str, t_game *game, char *elem)
 {
-	printf("str = %s\n", str);
+	int	i;
+	int	j;
+	char	*path;
+
+	i = 0;
+	path = NULL;
 	(void)game;
 	(void)elem;
+	while (str[i] != '\n' && str[i] != '\0' && str[i] != ' ' && str[i] != '\t')
+		i++;
+	path = malloc(sizeof(char) * (i + 1));
+	j = 0;
+	while (j < i)
+	{
+		path[j] = str[j];
+		j++;
+	}
+	path[j] = '\0';
+	store_path(path, game, elem);
 	return (1);
 }
 
 int	parse_rgb(char *str, t_game *game, char *elem)
 {
-	printf("str = %s\n", str);
+	printf("str = %s", str);
 	(void)game;
 	(void)elem;
 	return (1);	
