@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 16:28:34 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/07 17:35:37 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/07 17:37:52 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	store_path(char *path, t_game *game, char *elem)
 
 int	parse_path(char *str, t_game *game, char *elem)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	char	*path;
 
 	i = 0;
