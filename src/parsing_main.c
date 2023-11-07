@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 15:27:14 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/06 17:25:09 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/07 17:26:23 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,18 +69,6 @@ char	**get_file_content(char *file)
 	file_content[i] = NULL;
 	skip_lines_end(fd);
 	return (close(fd), file_content);
-}
-
-void	free_array(char	**array)
-{
-	int	i;
-
-	i = 0;
-	while (array[i] != NULL)
-	{
-		free(array[i]);
-		i++;
-	}
 }
 
 // argument_check will check if the argument seems valid.

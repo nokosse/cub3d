@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 16:28:34 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/07 16:22:23 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/07 17:35:37 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ int	parse_path(char *str, t_game *game, char *elem)
 
 	i = 0;
 	path = NULL;
-	(void)game;
-	(void)elem;
 	while (str[i] != '\n' && str[i] != '\0' && str[i] != ' ' && str[i] != '\t')
 		i++;
 	path = malloc(sizeof(char) * (i + 1));
@@ -46,14 +44,6 @@ int	parse_path(char *str, t_game *game, char *elem)
 	path[j] = '\0';
 	store_path(path, game, elem);
 	return (1);
-}
-
-int	parse_rgb(char *str, t_game *game, char *elem)
-{
-	printf("str = %s", str);
-	(void)game;
-	(void)elem;
-	return (1);	
 }
 
 // Will search in game->file_cont (is a char**) for *elem.
@@ -72,7 +62,6 @@ int	search_elem(char *elem, t_game *game)
 			&& (game->file_cont[i][j + ft_strlen(elem)] == ' '
 			|| game->file_cont[i][j + ft_strlen(elem)] == '\t'))
 		{
-			printf("Found %s\n", elem);
 			j += ft_strlen(elem);
 			skip_spaces_tabs(game->file_cont[i], &j);
 			if (elem[0] != 'F' && elem[0] != 'C')
@@ -89,7 +78,6 @@ int	search_elem(char *elem, t_game *game)
 		}
 		i++;
 	}
-	printf("Couldn't find %s\n", elem);
 	return (0);
 }
 
