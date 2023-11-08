@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 18:00:24 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/07 17:26:28 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/08 16:04:37 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	skip_lines(int fd)
 		;
 }
 
-void	skip_spaces_tabs(char *line, int *i)
+void	skip_spaces(char *line, int *i)
 {
 	if (line == NULL)
 		return ;
@@ -39,7 +39,7 @@ void	skip_spaces_tabs(char *line, int *i)
 		return ;
 	if (line[*i] == '\n')
 		return ;
-	while (line[*i] == ' ' || line[*i] == '\t')
+	while (line[*i] == ' ')
 	{
 		if (line[*i] == '\0')
 			return ;

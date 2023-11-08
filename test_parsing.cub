@@ -1,16 +1,15 @@
 
 
-
-
-NO ./assets/textures/wall_1.png dwlmdwdw
+  NO ./assets/textures/wall_1.png dwlmdwdw
+s
+   SO ./assets/textures/wall_2.png
 
 
 		WE   ./assets/textures/wall_3.png
+   
 
 
-          SO ./assets/textures/wall_2.png
-
-EA      ./assets/textures/wall_4.png ;
+EA      ./assets/textures/wall_4.png dwdwdwdw
 
 
 		F    220,0,80

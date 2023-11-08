@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 09:31:13 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/07 17:35:54 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/08 16:03:27 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	parse_rgb(char *str, t_game *game, char *elem)
 		return (0);
 	while (ft_isdigit(str[i]) == 1)
 		i++;
-	if (str[i] != '\0' && str[i] != '\n' && str[i] != ' ' && str[i] != '\t')
+	if (str[i] != '\0' && str[i] != '\n' && str[i] != ' ')
 		return (0);
 	
 	// part 2 : check if the numbers are between 0 and 255
