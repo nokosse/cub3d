@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:21:53 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/09 17:01:16 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/09 17:02:28 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # include "defines.h"
 # include "structs.h"
 
-# include <math.h>
+# include <math.h>      // libmath
 # include <stdio.h>     // printf
 # include <stdlib.h>    // malloc, free, exit
 # include <unistd.h>    // open, read, write, close
