@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:30:41 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/09 16:29:58 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/09 17:42:14 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,13 @@ typedef struct s_map
 }				t_map;
 
 // t_parse contains all the informations about the parsing.
+// elem_lines is an array of int.
+// elem_lines[0] is the line in the file where the NO argument is.
+// elem_lines[1] is the same for SO.
+// all the way with this order: NO (0), SO (1), WE (2), EA (3), F (4), C (5).
+// last_elem is the last element parsed.
+// it's the lower (in lines) of the arguments.
+// it's the closest element to the map.
 typedef struct s_parse
 {
 	int			*elem_lines;

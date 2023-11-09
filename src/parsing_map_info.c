@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 16:28:34 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/09 17:18:06 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/09 17:35:19 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,19 +92,19 @@ int	parse_map_info(t_game *game)
 {
 	init_t_parse(game);
 	if (search_elem("NO", game) == 0)
-		return (0);
+		return (free(game->parse.elem_lines), 0);
 	if (search_elem("SO", game) == 0)
-		return (0);
+		return (free(game->parse.elem_lines), 0);
 	if (search_elem("WE", game) == 0)
-		return (0);
+		return (free(game->parse.elem_lines), 0);
 	if (search_elem("EA", game) == 0)
-		return (0);
+		return (free(game->parse.elem_lines), 0);
 	if (search_elem("F", game) == 0)
-		return (0);
+		return (free(game->parse.elem_lines), 0);
 	if (search_elem("C", game) == 0)
-		return (0);
+		return (free(game->parse.elem_lines), 0);
 	if (check_empty_lines(game) == 0)
-		return (0);
+		return (free(game->parse.elem_lines), 0);
 	free(game->parse.elem_lines);
 	return (1);
 }
