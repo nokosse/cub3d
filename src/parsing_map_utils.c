@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 18:00:24 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/08 16:04:37 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/09 16:57:55 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,15 @@ void	free_array(char	**array)
 		free(array[i]);
 		i++;
 	}
+}
+
+void	init_t_parse(t_game *game)
+{
+	game->parse.elem_lines = malloc(sizeof(int) * 6);
+	game->parse.elem_lines[0] = 0;
+	game->parse.elem_lines[1] = 0;
+	game->parse.elem_lines[2] = 0;
+	game->parse.elem_lines[3] = 0;
+	game->parse.elem_lines[4] = 0;
+	game->parse.elem_lines[5] = 0;
 }

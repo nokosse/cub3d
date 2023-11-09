@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:21:53 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/08 16:04:34 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/09 17:01:16 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,8 @@ void	skip_lines_end(int fd);
 void	skip_spaces(char *line, int *i);
 void	free_array(char	**array);
 int		parse_rgb(char *str, t_game *game, char *elem);
+void	set_line(char *elem, t_game *game, int i);
+void	init_t_parse(t_game *game);
+int 	check_empty_lines(t_game *game);
 
 #endif

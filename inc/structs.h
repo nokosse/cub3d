@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:30:41 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/08 15:21:24 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/09 16:29:58 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,13 @@ typedef struct s_map
 	t_player	player;
 }				t_map;
 
+// t_parse contains all the informations about the parsing.
+typedef struct s_parse
+{
+	int			*elem_lines;
+	int			last_elem;
+}				t_parse;
+
 // t_game is the main strucure.
 // it includes all the others structures.
 typedef struct s_game
@@ -67,6 +74,7 @@ typedef struct s_game
 	t_rgb		floor;
 	t_rgb		ceil;
 	t_map		map;
+	t_parse		parse;
 	t_player	player;
 }				t_game;
 

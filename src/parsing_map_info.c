@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 16:28:34 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/08 16:04:34 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/09 17:00:52 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ int	search_elem(char *elem, t_game *game)
 				if (parse_rgb(game->file_cont[i] + j, game, elem) == 0)
 					return (0);
 			}
+			set_line(elem, game, i);
 			return (1);
 		}
 		i++;
@@ -82,6 +83,7 @@ int	search_elem(char *elem, t_game *game)
 
 int	parse_map_info(t_game *game)
 {
+	init_t_parse(game);
 	if (search_elem("NO", game) == 0)
 		return (0);
 	if (search_elem("SO", game) == 0)
@@ -94,5 +96,8 @@ int	parse_map_info(t_game *game)
 		return (0);
 	if (search_elem("C", game) == 0)
 		return (0);
+	if (check_empty_lines(game) == 0)
+		return (0);
+	free(game->parse.elem_lines);
 	return (1);
 }
