@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 16:28:34 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/09 17:00:52 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/09 17:18:06 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,21 @@ int	parse_path(char *str, t_game *game, char *elem)
 	return (1);
 }
 
+int	rgb_or_path(t_game *game, char *elem, int i, int j)
+{
+	if (elem[0] != 'F' && elem[0] != 'C')
+	{
+		if (parse_path(game->file_cont[i] + j, game, elem) == 0)
+			return (0);
+	}
+	else
+	{
+		if (parse_rgb(game->file_cont[i] + j, game, elem) == 0)
+			return (0);
+	}
+	return (1);
+}
+
 // Will search in game->file_cont (is a char**) for *elem.
 // If it finds it, it will parse the path.
 int	search_elem(char *elem, t_game *game)
@@ -63,16 +78,8 @@ int	search_elem(char *elem, t_game *game)
 		{
 			j += ft_strlen(elem);
 			skip_spaces(game->file_cont[i], &j);
-			if (elem[0] != 'F' && elem[0] != 'C')
-			{
-				if (parse_path(game->file_cont[i] + j, game, elem) == 0)
-					return (0);
-			}
-			else
-			{
-				if (parse_rgb(game->file_cont[i] + j, game, elem) == 0)
-					return (0);
-			}
+			if (rgb_or_path(game, elem, i, j) == 0)
+				return (0);
 			set_line(elem, game, i);
 			return (1);
 		}

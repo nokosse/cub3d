@@ -6,17 +6,16 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 09:31:13 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/08 16:03:27 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/09 17:27:08 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-int	parse_rgb(char *str, t_game *game, char *elem)
+int	check_string_valid(char *str)
 {
 	int	i;
 
-	// part 1 : check if the string is valid
 	i = 0;
 	if (ft_isdigit(str[i]) == 0)
 		return (0);
@@ -38,10 +37,29 @@ int	parse_rgb(char *str, t_game *game, char *elem)
 		i++;
 	if (str[i] != '\0' && str[i] != '\n' && str[i] != ' ')
 		return (0);
-	
-	// part 2 : check if the numbers are between 0 and 255
+	return (1);
+}
+
+void	store_rgb_values(char **rgb, t_game *game, char *elem)
+{
+	if (elem[0] == 'F')
+	{
+		game->floor.r = ft_atoi(rgb[0]);
+		game->floor.g = ft_atoi(rgb[1]);
+		game->floor.b = ft_atoi(rgb[2]);
+	}
+	else if (elem[0] == 'C')
+	{
+		game->ceil.r = ft_atoi(rgb[0]);
+		game->ceil.g = ft_atoi(rgb[1]);
+		game->ceil.b = ft_atoi(rgb[2]);
+	}
+}
+
+int	check_valid_rgb_number(char *str, t_game *game, char *elem)
+{
 	char	**rgb;
-	
+
 	rgb = NULL;
 	rgb = ft_split(str, ',');
 	if (ft_atoi(rgb[0]) > 255 || ft_atoi(rgb[0]) < 0)
@@ -62,22 +80,16 @@ int	parse_rgb(char *str, t_game *game, char *elem)
 		free(rgb);
 		return (0);
 	}
-	
-	// part 3 : store the numbers in the struct
-	if (elem[0] == 'F')
-	{
-		game->floor.r = ft_atoi(rgb[0]);
-		game->floor.g = ft_atoi(rgb[1]);
-		game->floor.b = ft_atoi(rgb[2]);
-	}
-	else if (elem[0] == 'C')
-	{
-		game->ceil.r = ft_atoi(rgb[0]);
-		game->ceil.g = ft_atoi(rgb[1]);
-		game->ceil.b = ft_atoi(rgb[2]);
-	}
-
+	store_rgb_values(rgb, game, elem);
 	free_array(rgb);
-	free(rgb);
-	return (1);	
+	return (free(rgb), 1);
+}
+
+int	parse_rgb(char *str, t_game *game, char *elem)
+{
+	if (check_string_valid(str) == 0)
+		return (0);
+	if (check_valid_rgb_number(str, game, elem) == 0)
+		return (0);
+	return (1);
 }
