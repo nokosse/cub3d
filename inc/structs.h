@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:30:41 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/09 17:42:14 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/10 15:22:09 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ typedef struct s_player
 typedef struct s_map
 {
 	char		**map;
+	int			map_start;
+	int			map_end;
 	int			map_width;
 	int			map_height;
 	t_player	player;
@@ -66,6 +68,7 @@ typedef struct s_parse
 {
 	int			*elem_lines;
 	int			last_elem;
+	int			last_line;
 }				t_parse;
 
 // t_game is the main strucure.

@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 13:17:07 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/10 13:43:24 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/10 15:12:33 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,10 @@ void	parse_error_msg(void)
 	printf(" R, NO, SO, WE, EA, S, F, C\n");
 	printf("\t- Elements of F and C must be R,G,B values\n");
 	printf("\t- The assets must be in .xpm format\n");
+	printf("\t- There must be newline(s) after the last element\n");
 	printf("\nThe map :\n");
 	printf("\t- The map must be placed after all the elements\n");
 	printf("\t- The map must be surrounded by walls\n");
 	printf("\t- The map must contain one of character inside : N, S, E, W\n");
+	printf("\t- The map must be preceded by newline(s)\n");
 }

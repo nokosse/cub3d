@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 15:27:14 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/10 13:58:06 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/10 17:21:34 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ int	ft_parse(int ac, char **av, t_game *game)
 	{
 		free_array(file_content);
 		free(file_content);
+		return (0);
 	}
 	free_array(file_content);
 	free(file_content);
