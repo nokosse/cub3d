@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 16:28:34 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/09 17:35:19 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/10 12:56:48 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,5 +106,7 @@ int	parse_map_info(t_game *game)
 	if (check_empty_lines(game) == 0)
 		return (free(game->parse.elem_lines), 0);
 	free(game->parse.elem_lines);
+	if (check_correct_paths(game) == 0)
+		return (0);
 	return (1);
 }

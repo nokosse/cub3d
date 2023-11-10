@@ -6,7 +6,7 @@
 #    By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/07 12:36:43 by kvisouth          #+#    #+#              #
-#    Updated: 2023/11/09 17:00:18 by kvisouth         ###   ########.fr        #
+#    Updated: 2023/11/10 13:10:06 by kvisouth         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRCS =	main.c \
 		parsing_map_rgb.c \
 		parsing_rgb_utils.c \
 		parsing_utils.c \
+		parsing_paths.c \
 
 OBJS = $(addprefix obj/, $(notdir $(SRCS:.c=.o)))
 
