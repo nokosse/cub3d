@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 13:17:07 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/10 13:39:50 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/10 13:43:24 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	parse_error_msg(void)
 	printf("\t- The elements can be in mixed order\n");
 	printf("\t- There must be in the following elements :");
 	printf(" R, NO, SO, WE, EA, S, F, C\n");
+	printf("\t- Elements of F and C must be R,G,B values\n");
 	printf("\t- The assets must be in .xpm format\n");
 	printf("\nThe map :\n");
 	printf("\t- The map must be placed after all the elements\n");
