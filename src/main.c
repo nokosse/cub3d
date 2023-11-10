@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:09:34 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/09 17:49:04 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/10 13:25:29 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	main(int ac, char **av)
 	init_elem(&game);
 	if (ft_parse(ac, av, &game) == 0)
 	{
-		printf("Error in parsing\n");
+		parse_error_msg();
 		free_elem(&game);
 		return (0);
 	}
