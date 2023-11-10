@@ -6,7 +6,7 @@
 #    By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/07 12:36:43 by kvisouth          #+#    #+#              #
-#    Updated: 2023/11/10 14:03:01 by kvisouth         ###   ########.fr        #
+#    Updated: 2023/11/10 14:07:35 by kvisouth         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,9 +15,9 @@ NAME = cub3d
 SRCS =	main.c \
 		parsing_main.c \
 		parsing_argument.c \
-		parsing_map_info.c \
-		parsing_map_utils.c \
-		parsing_map_rgb.c \
+		parsing_elem_info.c \
+		parsing_elem_utils.c \
+		parsing_elem_rgb.c \
 		parsing_rgb_utils.c \
 		parsing_utils.c \
 		parsing_paths.c \
