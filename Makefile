@@ -6,7 +6,7 @@
 #    By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/07 12:36:43 by kvisouth          #+#    #+#              #
-#    Updated: 2023/11/10 13:24:39 by kvisouth         ###   ########.fr        #
+#    Updated: 2023/11/10 14:03:01 by kvisouth         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRCS =	main.c \
 		parsing_utils.c \
 		parsing_paths.c \
 		parsing_error_message.c \
+		parsing_map.c \
 
 OBJS = $(addprefix obj/, $(notdir $(SRCS:.c=.o)))
 
