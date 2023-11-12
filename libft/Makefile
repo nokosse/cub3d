@@ -6,7 +6,7 @@
 #    By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/16 17:39:04 by operez            #+#    #+#              #
-#    Updated: 2023/10/16 17:48:20 by kvisouth         ###   ########.fr        #
+#    Updated: 2023/10/25 13:52:36 by kvisouth         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,7 +64,8 @@ SRCS = src/ft_atoi.c \
 	src/ft_tolower.c \
 	src/ft_toupper.c \
 	src/get_next_line_utils.c \
-	src/get_next_line.c \
+	src/get_next_line.c
+
 
 OBJS = $(SRCS:src/%.c=obj/%.o)
 RM	 = rm -rf
@@ -74,11 +75,12 @@ all:
 	@$(MAKE) $(NAME)
 
 $(NAME): $(OBJS)
-	$(AR) $@ $^
+	@echo "Indexing $(NAME)..."
+	@$(AR) $@ $^
 
 obj/%.o: src/%.c
 	@mkdir -p obj
-	$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	$(RM) obj

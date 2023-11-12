@@ -41,7 +41,7 @@ void	skip_spaces(char *line, int *i)
 		return ;
 	if (line[*i] == '\n')
 		return ;
-	while (line[*i] == ' ')
+	while (line[*i] == ' ' || line[*i] == '\t')
 	{
 		if (line[*i] == '\0')
 			return ;
@@ -59,6 +59,7 @@ void	free_array(char	**array)
 		free(array[i]);
 		i++;
 	}
+	free(array);
 }
 
 void	init_t_parse(t_game *game)

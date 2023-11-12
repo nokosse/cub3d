@@ -40,6 +40,12 @@ int	main(int ac, char **av)
 	if (ft_parse(ac, av, &game))
 	{
 		//parse_error_msg();
+		printf("NO = %s\n", game.no);
+	printf("SO = %s\n", game.so);
+	printf("WE = %s\n", game.we);
+	printf("EA = %s\n", game.ea);
+	printf("F = %d,%d,%d\n", game.floor.r, game.floor.g, game.floor.b);
+	printf("C = %d,%d,%d\n", game.ceil.r, game.ceil.g, game.ceil.b);
 		free_elem(&game);
 		return (1);
 	}

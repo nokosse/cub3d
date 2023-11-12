@@ -21,20 +21,21 @@ int	check_string_valid(char *str)
 		return (0);
 	while (ft_isdigit(str[i]) == 1)
 		i++;
-	if (str[i] != ',')
+	if (skip_spaces(str, &i), str[i++] != ',')
 		return (0);
-	i++;
+	skip_spaces(str, &i);
 	if (ft_isdigit(str[i]) == 0)
 		return (0);
 	while (ft_isdigit(str[i]) == 1)
 		i++;
-	if (str[i] != ',')
+	if (skip_spaces(str, &i), str[i++] != ',')
 		return (0);
-	i++;
+	skip_spaces(str, &i);
 	if (ft_isdigit(str[i]) == 0)
 		return (0);
 	while (ft_isdigit(str[i]) == 1)
 		i++;
+	skip_spaces(str, &i);
 	if (str[i] != '\0' && str[i] != '\n' && str[i] != ' ')
 		return (0);
 	return (1);
@@ -65,24 +66,21 @@ int	check_valid_rgb_number(char *str, t_game *game, char *elem)
 	if (ft_atoi(rgb[0]) > 255 || ft_atoi(rgb[0]) < 0)
 	{
 		free_array(rgb);
-		free(rgb);
 		return (0);
 	}
 	if (ft_atoi(rgb[1]) > 255 || ft_atoi(rgb[1]) < 0)
 	{
 		free_array(rgb);
-		free(rgb);
 		return (0);
 	}
 	if (ft_atoi(rgb[2]) > 255 || ft_atoi(rgb[2]) < 0)
 	{
 		free_array(rgb);
-		free(rgb);
 		return (0);
 	}
 	store_rgb_values(rgb, game, elem);
 	free_array(rgb);
-	return (free(rgb), 1);
+	return (1);
 }
 
 int	parse_rgb(char *str, t_game *game, char *elem)

@@ -1,5 +1,5 @@
-C 84,171,179
-SO x.xpm
+C	84,	171	     ,  179
+SO ./assets/wall1.xpm
 NO ./assets/wall1.xpm
 EA ./assets/wall1.xpm
 WE ./assets/wall1.xpm

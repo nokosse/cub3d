@@ -64,11 +64,11 @@ char	**get_file_content(char *file)
 	{
 		line = get_next_line(fd);
 		if (line == NULL)
-			return (free_array(file_content), close(fd), NULL);
+			return (free_array(file_content), free(file_content), close(fd), NULL);
 		file_content[i] = line;
 		i++;
 	}
-	skip_lines_end(fd); // ???
+	skip_lines_end(fd);
 	return (close(fd), file_content);
 }
 
@@ -77,29 +77,28 @@ char	**get_file_content(char *file)
 // parse_map will parse the map itself (the 1, 0, N, S, E, W).
 int	ft_parse(int ac, char **av, t_game *game)
 {
-	char	**file_content;
+	//char	**file_content;
 
-	file_content = NULL;
+	//file_content = NULL;
 	if (argument_check(ac, av))  //ok
 		return (1);
 	game->map_name = av[1];
-	file_content = get_file_content(av[1]); //ok
-	if (file_content == NULL)
-		return (1);
-	game->file_cont = file_content;
+	game->file_cont = get_file_content(av[1]); //ok
+	if (game->file_cont == NULL)
+		return (1);	
+//	game->file_cont = file_content;
 	if (parse_map_info(game)) //ok
 	{
-		free_array(file_content);
-		free(file_content);
+		printf("ret parse info\n");
+		free_array(game->file_cont);
 		return (1);
 	}
 	if (parse_map(game))
 	{
-		free_array(file_content);
-		free(file_content);
+		printf("ret parse map\n");
+		free_array(game->file_cont);
 		return (1);
 	}
-	free_array(file_content);
-	free(file_content);
+	free_array(game->file_cont);
 	return (0);
 }

@@ -76,7 +76,8 @@ int	search_elem(char *elem, t_game *game)
 		j = 0;
 		skip_spaces(game->file_cont[i], &j);
 		if ((ft_strncmp(game->file_cont[i] + j, elem, ft_strlen(elem)) == 0)
-			&& (game->file_cont[i][j + ft_strlen(elem)] == ' '))
+			&& (game->file_cont[i][j + ft_strlen(elem)] == ' ' ||
+				game->file_cont[i][j + ft_strlen(elem)] == '\t'))
 		{
 			j += ft_strlen(elem);
 			skip_spaces(game->file_cont[i], &j);
