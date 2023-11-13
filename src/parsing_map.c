@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 16:28:55 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/13 18:00:41 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/13 18:38:45 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,7 @@ int	get_map(t_game *game, int start, int end)
 }
 
 int	parse_map(t_game *game)
+
 {
 	int	i;
 
@@ -138,13 +139,15 @@ int	parse_map(t_game *game)
 	i = game->parse.last_elem + 1;
 	skip_newlines(game, &i);
 	if (set_map_start(game, i) == 0)
-		return (0);
+		return (1);
 	if (get_map_size(game, i) < 3)
-		return (0);
+		return (1);
 	game->map.map_end = (game->map.map_start + game->map.map_height) - 1;
 	if (check_garbage(game, game->map.map_end, game->parse.last_line) == 0)
-		return (0);
+		return (1);
 	if (get_map(game, game->map.map_start, game->map.map_end) == 0)
-		return (0);
-	return (1);
+		return (1);
+	if (check_map(game) == 0)
+		return (1);
+	return (0);
 }

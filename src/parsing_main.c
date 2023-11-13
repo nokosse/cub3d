@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 15:27:14 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/13 18:02:47 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/13 18:35:47 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,25 +76,19 @@ char	**get_file_content(char *file)
 // parse_map will parse the map itself (the 1, 0, N, S, E, W).
 int	ft_parse(int ac, char **av, t_game *game)
 {
-	//char	**file_content;
-
-	//file_content = NULL;
-	if (argument_check(ac, av))  //ok
+	if (argument_check(ac, av))
 		return (1);
 	game->map_name = av[1];
-	game->file_cont = get_file_content(av[1]); //ok
+	game->file_cont = get_file_content(av[1]);
 	if (game->file_cont == NULL)
 		return (1);	
-//	game->file_cont = file_content;
-	if (parse_map_info(game)) //ok
+	if (parse_map_info(game))
 	{
-		printf("ret parse info\n");
 		free_array(game->file_cont);
 		return (1);
 	}
-	if (parse_map(game) != 0)
+	if (parse_map(game))
 	{
-		printf("ret parse map\n");
 		free_array(game->file_cont);
 		return (1);
 	}
