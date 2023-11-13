@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 16:28:55 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/13 16:52:08 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/13 17:29:50 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,27 +59,51 @@ int	is_empty_line(t_game *game, int i)
 // Will check if line (i) is completely empty (only \n at [0])
 int	is_empty_line2(t_game *game, int i)
 {
-	int	j;
-
-	j = 0;
-	if (game->file_cont[i][j] == '\n')
+	if (game->file_cont[i][0] == '\n')
 		return (1);
 	return (0);
 }
 
-int	set_map_end(t_game *game, int *i)
+int	get_map_size(t_game *game, int i)
 {
 	int	j;
+	int	size;
 
 	j = 0;
-	while (game->file_cont[*i] != NULL)
+	size = 0;
+	while (game->file_cont[i] != NULL)
 	{
-		
+		j = 0;
+		skip_spaces(game->file_cont[i], &j);
+		if (game->file_cont[i][j] != '1' && game->file_cont[i][j] != '0')
+		{
+			if (game->file_cont[i][0] == '\n')
+			{
+				game->map.map_height = size;
+				return (size);
+			}
+			else
+				return (0);
+		}
+		size++;
+		i++;
 	}
-	game->map.map_end = *i - 1;
+	game->map.map_height = size;
+	return (size);
+}
+
+int	check_garbage(t_game *game, int a, int b)
+{
+	a++;
+	while (a < b)
+	{
+		if (is_empty_line2(game, a) == 0)
+		{
+			return (0);
+		}
+		a++;
+	}
 	return (1);
-	(void)game;
-	(void)j;
 }
 
 int	parse_map(t_game *game)
@@ -92,14 +116,12 @@ int	parse_map(t_game *game)
 	skip_newlines(game, &i);
 	if (set_map_start(game, i) == 0)
 		return (0);
-	if (set_map_end(game, &i) == 0)
+	if (get_map_size(game, i) < 3)
 		return (0);
-	printf("map start = %d\n", game->map.map_start);
-	printf("map end = %d\n", game->map.map_end);
-	while (game->file_cont[i] != NULL)
-	{
-		i++;
-	}
+	game->map.map_end = (game->map.map_start + game->map.map_height) - 1;
+	if (check_garbage(game, game->map.map_end, game->parse.last_line) == 0)
+		return (0);
+		
 	return (1);
 	(void)j;
 	(void)game;

@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 15:27:14 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/13 16:45:12 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/13 17:27:03 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int	ft_parse(int ac, char **av, t_game *game)
 		free_array(game->file_cont);
 		return (1);
 	}
-	if (parse_map(game))
+	if (parse_map(game) != 0)
 	{
 		printf("ret parse map\n");
 		free_array(game->file_cont);
