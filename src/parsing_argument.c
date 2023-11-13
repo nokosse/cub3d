@@ -6,7 +6,7 @@
 /*   By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 15:29:12 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/11 18:00:39 by kscordel         ###   ########.fr       */
+/*   Updated: 2023/11/13 15:45:36 by kscordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	argument_check(int ac, char **av)
 	if (ft_strlen(av[1]) <= 4 || ft_isalnum(av[1][ft_strlen(av[1]) - 5]) == 0)
 		return (ft_putstr_fd("wrong format of file\n", 2), 1);
 	fd = open(av[1], O_RDONLY | O_DIRECTORY);
-	if (fd > 0)
+	if (fd >= 0)
 	{
 		close(fd);
 		return (ft_putstr_fd(av[1], 2), ft_putstr_fd(" is a directory", 2), 1);

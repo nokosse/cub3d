@@ -6,7 +6,7 @@
 /*   By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 18:00:24 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/11 20:29:37 by kscordel         ###   ########.fr       */
+/*   Updated: 2023/11/13 15:48:12 by kscordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	skip_spaces(char *line, int *i)
 		return ;
 	if (line[*i] == '\n')
 		return ;
-	while (line[*i] == ' ' || line[*i] == '\t')
+	while (line[*i] == ' ')
 	{
 		if (line[*i] == '\0')
 			return ;

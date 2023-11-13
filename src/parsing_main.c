@@ -6,7 +6,7 @@
 /*   By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 15:27:14 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/11 17:59:39 by kscordel         ###   ########.fr       */
+/*   Updated: 2023/11/13 15:40:45 by kscordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ char	**get_file_content(char *file)
 	{
 		line = get_next_line(fd);
 		if (line == NULL)
-			return (free_array(file_content), free(file_content), close(fd), NULL);
+			return (free_array(file_content), close(fd), NULL);
 		file_content[i] = line;
 		i++;
 	}
