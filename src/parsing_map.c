@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 16:28:55 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/13 17:29:50 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/13 17:37:37 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,10 +106,33 @@ int	check_garbage(t_game *game, int a, int b)
 	return (1);
 }
 
-int	parse_map(t_game *game)
+int	get_map(t_game *game, int start, int end)
 {
 	int	i;
 	int	j;
+
+	i = start;
+	j = 0;
+	game->map.map = ft_calloc(sizeof(char *), (game->map.map_height + 1));
+	if (game->map.map == NULL)
+		return (0);
+	while (i <= end)
+	{
+		game->map.map[j] = ft_strdup(game->file_cont[i]);
+		if (game->map.map[j] == NULL)
+		{
+			free_array(game->map.map);
+			return (0);
+		}
+		i++;
+		j++;
+	}
+	return (1);
+}
+
+int	parse_map(t_game *game)
+{
+	int	i;
 
 	set_last_line(game);
 	i = game->parse.last_elem + 1;
@@ -121,8 +144,15 @@ int	parse_map(t_game *game)
 	game->map.map_end = (game->map.map_start + game->map.map_height) - 1;
 	if (check_garbage(game, game->map.map_end, game->parse.last_line) == 0)
 		return (0);
-		
+	if (get_map(game,game->map.map_start, game->map.map_end) == 0)
+		return (0);
+	
+	//print map
+	i = 0;
+	while (i < game->map.map_height)
+	{
+		printf("%s", game->map.map[i]);
+		i++;
+	}
 	return (1);
-	(void)j;
-	(void)game;
 }
