@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 16:28:55 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/13 17:37:37 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/13 18:00:41 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,15 +144,7 @@ int	parse_map(t_game *game)
 	game->map.map_end = (game->map.map_start + game->map.map_height) - 1;
 	if (check_garbage(game, game->map.map_end, game->parse.last_line) == 0)
 		return (0);
-	if (get_map(game,game->map.map_start, game->map.map_end) == 0)
+	if (get_map(game, game->map.map_start, game->map.map_end) == 0)
 		return (0);
-	
-	//print map
-	i = 0;
-	while (i < game->map.map_height)
-	{
-		printf("%s", game->map.map[i]);
-		i++;
-	}
 	return (1);
 }

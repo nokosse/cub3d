@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 15:27:14 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/13 17:27:03 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/13 18:02:47 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,7 @@ char	**get_file_content(char *file)
 		file_content[i] = line;
 		i++;
 	}
-	skip_lines_end(fd);
-	return (close(fd), file_content);
+	return (skip_lines_end(fd), close(fd), file_content);
 }
 
 // argument_check will check if the argument seems valid.

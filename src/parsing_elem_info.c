@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 16:28:34 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/13 16:45:46 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/13 18:01:31 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ int	search_elem(char *elem, t_game *game)
 		j = 0;
 		skip_spaces(game->file_cont[i], &j);
 		if ((ft_strncmp(game->file_cont[i] + j, elem, ft_strlen(elem)) == 0)
-			&& (game->file_cont[i][j + ft_strlen(elem)] == ' ' ||
-				game->file_cont[i][j + ft_strlen(elem)] == '\t'))
+			&& (game->file_cont[i][j + ft_strlen(elem)] == ' '
+			|| game->file_cont[i][j + ft_strlen(elem)] == '\t'))
 		{
 			j += ft_strlen(elem);
 			skip_spaces(game->file_cont[i], &j);
