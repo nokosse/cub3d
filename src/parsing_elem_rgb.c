@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_map_rgb.c                                  :+:      :+:    :+:   */
+/*   parsing_elem_rgb.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 09:31:13 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/09 17:27:08 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/13 16:45:35 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,36 +21,21 @@ int	check_string_valid(char *str)
 		return (0);
 	while (ft_isdigit(str[i]) == 1)
 		i++;
-<<<<<<< HEAD
-	if (str[i] != ',')
-		return (0);
-	i++;
-=======
 	if (skip_spaces(str, &i), str[i++] != ',')
 		return (0);
 	skip_spaces(str, &i);
->>>>>>> kscordel
 	if (ft_isdigit(str[i]) == 0)
 		return (0);
 	while (ft_isdigit(str[i]) == 1)
 		i++;
-<<<<<<< HEAD
-	if (str[i] != ',')
-		return (0);
-	i++;
-=======
 	if (skip_spaces(str, &i), str[i++] != ',')
 		return (0);
 	skip_spaces(str, &i);
->>>>>>> kscordel
 	if (ft_isdigit(str[i]) == 0)
 		return (0);
 	while (ft_isdigit(str[i]) == 1)
 		i++;
-<<<<<<< HEAD
-=======
 	skip_spaces(str, &i);
->>>>>>> kscordel
 	if (str[i] != '\0' && str[i] != '\n' && str[i] != ' ')
 		return (0);
 	return (1);
@@ -81,37 +66,21 @@ int	check_valid_rgb_number(char *str, t_game *game, char *elem)
 	if (ft_atoi(rgb[0]) > 255 || ft_atoi(rgb[0]) < 0)
 	{
 		free_array(rgb);
-<<<<<<< HEAD
-		free(rgb);
-=======
->>>>>>> kscordel
 		return (0);
 	}
 	if (ft_atoi(rgb[1]) > 255 || ft_atoi(rgb[1]) < 0)
 	{
 		free_array(rgb);
-<<<<<<< HEAD
-		free(rgb);
-=======
->>>>>>> kscordel
 		return (0);
 	}
 	if (ft_atoi(rgb[2]) > 255 || ft_atoi(rgb[2]) < 0)
 	{
 		free_array(rgb);
-<<<<<<< HEAD
-		free(rgb);
-=======
->>>>>>> kscordel
 		return (0);
 	}
 	store_rgb_values(rgb, game, elem);
 	free_array(rgb);
-<<<<<<< HEAD
-	return (free(rgb), 1);
-=======
 	return (1);
->>>>>>> kscordel
 }
 
 int	parse_rgb(char *str, t_game *game, char *elem)

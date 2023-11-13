@@ -3,17 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-<<<<<<< HEAD
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:21:53 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/10 15:43:30 by kvisouth         ###   ########.fr       */
-=======
-/*   By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/25 13:21:53 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/11 16:36:55 by kscordel         ###   ########.fr       */
->>>>>>> kscordel
+/*   Updated: 2023/11/13 16:46:18 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +30,9 @@
 # include <stdio.h>     // printf
 # include <stdlib.h>    // malloc, free, exit
 # include <unistd.h>    // open, read, write, close
-<<<<<<< HEAD
-=======
 #include <sys/stat.h>
 #include <fcntl.h>
 
->>>>>>> kscordel
 # include <string.h>    // strerror
 # include <errno.h>     // perror
 

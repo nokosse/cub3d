@@ -3,17 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-<<<<<<< HEAD
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:09:34 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/10 13:57:10 by kvisouth         ###   ########.fr       */
-=======
-/*   By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/25 13:09:34 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/11 18:01:58 by kscordel         ###   ########.fr       */
->>>>>>> kscordel
+/*   Updated: 2023/11/13 16:45:55 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +37,6 @@ int	main(int ac, char **av)
 	t_game	game;
 
 	init_elem(&game);
-<<<<<<< HEAD
-	if (ft_parse(ac, av, &game) == 0)
-	{
-		parse_error_msg();
-		free_elem(&game);
-		return (0);
-=======
 	if (ft_parse(ac, av, &game))
 	{
 		//parse_error_msg();
@@ -62,7 +48,6 @@ int	main(int ac, char **av)
 	printf("C = %d,%d,%d\n", game.ceil.r, game.ceil.g, game.ceil.b);
 		free_elem(&game);
 		return (1);
->>>>>>> kscordel
 	}
 	printf("Parsing OK\n");
 	printf("NO = %s\n", game.no);

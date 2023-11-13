@@ -3,17 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_paths.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-<<<<<<< HEAD
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 12:57:10 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/10 13:39:04 by kvisouth         ###   ########.fr       */
-=======
-/*   By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/10 12:57:10 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/11 21:00:50 by kscordel         ###   ########.fr       */
->>>>>>> kscordel
+/*   Updated: 2023/11/13 16:44:30 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,38 +15,6 @@
 int	check_xpm_extention(t_game *game)
 {
 	if (ft_strnstr(game->no, ".xpm", ft_strlen(game->no)) == NULL)
-<<<<<<< HEAD
-		return (0);
-	if (ft_strnstr(game->so, ".xpm", ft_strlen(game->so)) == NULL)
-		return (0);
-	if (ft_strnstr(game->we, ".xpm", ft_strlen(game->we)) == NULL)
-		return (0);
-	if (ft_strnstr(game->ea, ".xpm", ft_strlen(game->ea)) == NULL)
-		return (0);
-	return (1);
-}
-
-int	check_file_exist(t_game *game)
-{
-	if (open(game->no, O_RDONLY) == -1)
-		return (0);
-	if (open(game->so, O_RDONLY) == -1)
-		return (0);
-	if (open(game->we, O_RDONLY) == -1)
-		return (0);
-	if (open(game->ea, O_RDONLY) == -1)
-		return (0);
-	return (1);
-}
-
-int	check_correct_paths(t_game *game)
-{
-	if (check_file_exist(game) == 0)
-		return (0);
-	if (check_xpm_extention(game) == 0)
-		return (0);
-	return (1);
-=======
 		return (1);
 	if (ft_strnstr(game->so, ".xpm", ft_strlen(game->so)) == NULL)
 		return (1);
@@ -117,6 +78,5 @@ int	check_correct_paths(t_game *game)
 	if (check_xpm_extention(game))
 		return (ft_putstr_fd("erreur: no extension .xpm\n", 2), 1);
 	return (0);
->>>>>>> kscordel
 	(void)game;
 }

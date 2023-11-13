@@ -3,17 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-<<<<<<< HEAD
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 16:28:55 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/10 19:21:55 by kvisouth         ###   ########.fr       */
-=======
-/*   By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/25 16:28:55 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/11 20:15:28 by kscordel         ###   ########.fr       */
->>>>>>> kscordel
+/*   Updated: 2023/11/13 16:44:41 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +60,6 @@ int	set_map_end(t_game *game, int *i)
 	int	j;
 
 	j = 0;
-<<<<<<< HEAD
-	i++;
-	while (game->file_cont[*i] != NULL)
-	{
-		while (game->file_cont[*i][j] == ' ')
-			j++;
-=======
 	(*i)++;
 	while (game->file_cont[*i] != NULL)
 	{
@@ -81,15 +67,10 @@ int	set_map_end(t_game *game, int *i)
 		while (game->file_cont[*i][j] == ' ')
 			j++;
 		
->>>>>>> kscordel
 		if (game->file_cont[*i][j] == '1')
 			return (0);
 		(*i)++;
 	}
-<<<<<<< HEAD
-
-=======
->>>>>>> kscordel
 	return (1);
 	(void)game;
 	(void)j;
@@ -104,26 +85,16 @@ int	parse_map(t_game *game)
 	i = game->parse.last_elem + 1;
 	skip_newlines(game, &i);
 	if (set_map_start(game, i) == 0)
-<<<<<<< HEAD
-		return (0);
-	if (set_map_end(game, &i) == 0)
-		return (0);
-=======
 		return (1);
 	if (set_map_end(game, &i) == 0)
 		return (1);
->>>>>>> kscordel
 	printf("map start = %d\n", game->map.map_start);
 	printf("map end = %d\n", game->map.map_end);
 	while (game->file_cont[i] != NULL)
 	{
 		i++;
 	}
-<<<<<<< HEAD
-	return (1);
-=======
 	return (0);
->>>>>>> kscordel
 	(void)j;
 	(void)game;
 }
