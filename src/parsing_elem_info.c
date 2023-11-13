@@ -1,12 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
+<<<<<<< HEAD
 /*   parsing_map_info.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 16:28:34 by kvisouth          #+#    #+#             */
 /*   Updated: 2023/11/10 12:56:48 by kvisouth         ###   ########.fr       */
+=======
+/*   parsing_elem_info.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/25 16:28:34 by kvisouth          #+#    #+#             */
+/*   Updated: 2023/11/11 20:31:50 by kscordel         ###   ########.fr       */
+>>>>>>> kscordel
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +44,11 @@ int	parse_path(char *str, t_game *game, char *elem)
 	while (str[i] != '\n' && str[i] != '\0' && str[i] != ' ')
 		i++;
 	path = malloc(sizeof(char) * (i + 1));
+<<<<<<< HEAD
+=======
+	if (!path)
+		return (0);
+>>>>>>> kscordel
 	j = 0;
 	while (j < i)
 	{
@@ -74,7 +88,12 @@ int	search_elem(char *elem, t_game *game)
 		j = 0;
 		skip_spaces(game->file_cont[i], &j);
 		if ((ft_strncmp(game->file_cont[i] + j, elem, ft_strlen(elem)) == 0)
+<<<<<<< HEAD
 			&& (game->file_cont[i][j + ft_strlen(elem)] == ' '))
+=======
+			&& (game->file_cont[i][j + ft_strlen(elem)] == ' ' ||
+				game->file_cont[i][j + ft_strlen(elem)] == '\t'))
+>>>>>>> kscordel
 		{
 			j += ft_strlen(elem);
 			skip_spaces(game->file_cont[i], &j);
@@ -92,6 +111,7 @@ int	parse_map_info(t_game *game)
 {
 	init_t_parse(game);
 	if (search_elem("NO", game) == 0)
+<<<<<<< HEAD
 		return (free(game->parse.elem_lines), 0);
 	if (search_elem("SO", game) == 0)
 		return (free(game->parse.elem_lines), 0);
@@ -109,4 +129,23 @@ int	parse_map_info(t_game *game)
 	if (check_correct_paths(game) == 0)
 		return (0);
 	return (1);
+=======
+		return (ft_putstr_fd("erreur NO\n", 2), 1);
+	if (search_elem("SO", game) == 0)
+		return (ft_putstr_fd("erreur SO\n", 2), 1);
+	if (search_elem("WE", game) == 0)
+		return (ft_putstr_fd("erreur WE\n", 2), 1);
+	if (search_elem("EA", game) == 0)
+		return (ft_putstr_fd("erreur EA\n", 2), 1);
+	if (search_elem("F", game) == 0)
+		return (ft_putstr_fd("erreur F\n", 2), 1);
+	if (search_elem("C", game) == 0)
+		return (ft_putstr_fd("erreur C\n", 2), 1);
+	if (check_empty_lines(game) == 0)
+		return (1);
+	//free(game->parse.elem_lines);
+	if (check_correct_paths(game)) //ok
+		return (1);
+	return (0);
+>>>>>>> kscordel
 }

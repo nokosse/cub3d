@@ -3,10 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
+<<<<<<< HEAD
 #    By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/07 12:36:43 by kvisouth          #+#    #+#              #
 #    Updated: 2023/11/10 14:07:35 by kvisouth         ###   ########.fr        #
+=======
+#    By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/02/07 12:36:43 by kvisouth          #+#    #+#              #
+#    Updated: 2023/11/11 16:22:43 by kscordel         ###   ########.fr        #
+>>>>>>> kscordel
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +34,11 @@ SRCS =	main.c \
 OBJS = $(addprefix obj/, $(notdir $(SRCS:.c=.o)))
 
 CC = gcc
+<<<<<<< HEAD
 CFLAGS = -Wall -Wextra -Werror
+=======
+CFLAGS = -Wall -Wextra -Werror -g3
+>>>>>>> kscordel
 
 LIBFT_MAKEFILE = libft/Makefile
 MINILIBX_MAKEFILE = minilibx-linux/Makefile

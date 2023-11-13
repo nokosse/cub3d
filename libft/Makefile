@@ -64,7 +64,8 @@ SRCS = src/ft_atoi.c \
 	src/ft_tolower.c \
 	src/ft_toupper.c \
 	src/get_next_line_utils.c \
-	src/get_next_line.c \
+	src/get_next_line.c
+
 
 OBJS = $(SRCS:src/%.c=obj/%.o)
 RM	 = rm -rf
@@ -74,11 +75,12 @@ all:
 	@$(MAKE) $(NAME)
 
 $(NAME): $(OBJS)
-	$(AR) $@ $^
+	@echo "Indexing $(NAME)..."
+	@$(AR) $@ $^
 
 obj/%.o: src/%.c
 	@mkdir -p obj
-	$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	$(RM) obj

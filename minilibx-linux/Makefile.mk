@@ -42,11 +42,19 @@ all	: $(NAME)
 
 $(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(OBJ_DIR)
+<<<<<<< HEAD
 	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
 
 $(NAME)	: $(OBJ)
 	ar -r $(NAME) $(OBJ)
 	ranlib $(NAME)
+=======
+	@$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
+
+$(NAME)	: $(OBJ)
+	@ar -r $(NAME) $(OBJ)
+	@ranlib $(NAME)
+>>>>>>> kscordel
 	cp $(NAME) $(NAME_UNAME)
 
 check: all
