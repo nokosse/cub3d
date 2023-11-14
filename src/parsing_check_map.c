@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 18:13:19 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/14 16:40:17 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/14 17:56:16 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,49 @@ int	check_characters(t_game *game)
 				&& game->map.map[i][j] != 'E' && game->map.map[i][j] != 'W'
 				&& game->map.map[i][j] != ' ')
 				return (1);
+			j++;	
+		}
+		i++;
+	}
+	return (0);
+}
+
+// If we enter this function, it means map[i][j] is a '0'
+// So we only have to check around map[i][j].
+// It checks if the 0 is at the first line, last line, first column or last
+// Then it checks on the right if there is a \n, on the left if there is a ' '
+// Then it checks for ' ' on the top and the bottom of the 0.
+// Finally it does the same but for '\0' instead of ' '.
+int	check_around_index(t_map map, int i, int j)
+{
+	if (i == 0 || i == map.map_height - 1 || j == 0 || j == map.map_width - 1)
+		return (1);
+	if (map.map[i][j + 1] == '\n' || map.map[i][j - 1] == ' ')
+		return (1);
+	if (map.map[i + 1][j] == ' ' || map.map[i - 1][j] == ' ')
+		return (1);
+	if (map.map[i + 1][j] == '\0' || map.map[i - 1][j] == '\0')
+		return (1);
+	return (0);
+	(void)j;
+}
+
+int	check_map_closed(t_game *game)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < game->map.map_height)
+	{
+		j = 0;
+		while (game->map.map[i][j] != '\n' && game->map.map[i][j] != '\0')
+		{
+			if (game->map.map[i][j] == '0')
+			{
+				if (check_around_index(game->map, i, j))
+					return (1);
+			}
 			j++;
 		}
 		i++;
@@ -42,6 +85,8 @@ int	check_map(t_game *game)
 	if (check_characters(game))
 		return (0);
 	if (check_player(game))
+		return (0);
+	if (check_map_closed(game))
 		return (0);
 	return (1);
 }
