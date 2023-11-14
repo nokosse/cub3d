@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 15:27:14 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/14 18:07:26 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/14 18:47:59 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,9 @@ char	**get_file_content(char *file)
 	return (skip_lines_end(fd), close(fd), file_content);
 }
 
-// argument_check will check if the argument seems valid.
-// parse_map_info will parse the map info such as NO, SO, WE, EA, F, C.
-// parse_map will parse the map itself (the 1, 0, N, S, E, W).
+// 1. We parse the argument
+// 2. We parse the elements
+// 3. We parse the map itself
 int	ft_parse(int ac, char **av, t_game *game)
 {
 	if (argument_check(ac, av))

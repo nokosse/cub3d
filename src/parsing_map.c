@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 16:28:55 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/14 18:12:35 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/14 18:49:29 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int	set_map_start(t_game *game, int i)
 	return (0);
 }
 
+// Checks if there is garbage characters in the map.
+// There must be only \n between the map and the end of the file
 int	check_garbage(t_game *game, int a, int b)
 {
 	a++;
@@ -51,6 +53,7 @@ int	check_garbage(t_game *game, int a, int b)
 	return (1);
 }
 
+// Stores the map in a char ** (game->map.map)
 int	get_map(t_game *game, int start, int end)
 {
 	int	i;

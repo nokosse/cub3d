@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 18:10:43 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/14 18:12:41 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/14 18:50:54 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int	is_empty_line(t_game *game, int i)
 	return (0);
 }
 
+// Will get the size of the map (map_height)
 int	get_map_size(t_game *game, int i)
 {
 	int	j;
@@ -67,6 +68,7 @@ int	get_map_size(t_game *game, int i)
 	return (size);
 }
 
+// Will get the width of the map (map_width) (max line length)
 int	get_width_of_map(t_game *game)
 {
 	int	i;

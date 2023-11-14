@@ -6,12 +6,13 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 12:57:10 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/14 18:09:26 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/14 18:51:36 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
+// Checks if the paths have the extension .xpm
 int	check_xpm_extention(t_game *game)
 {
 	if (ft_strnstr(game->no, ".xpm", ft_strlen(game->no)) == NULL)
@@ -25,7 +26,7 @@ int	check_xpm_extention(t_game *game)
 	return (0);
 }
 
-/*check si le fichier est un repertoit et renvoie la string en cas d erreur*/
+// Checks if the path is a directory
 char	*check_is_directory(t_game *game)
 {
 	int	fds[4];
@@ -45,6 +46,7 @@ char	*check_is_directory(t_game *game)
 	return (NULL);
 }
 
+// Checks if the file exists
 char	*check_file_exist(t_game *game)
 {
 	int	fds[4];
