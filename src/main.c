@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:09:34 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/13 18:38:31 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/14 18:22:19 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	free_elem(t_game *game)
 		free(game->we);
 	if (game->ea != NULL)
 		free(game->ea);
+	if (game->map.map != NULL)
+		free_array(game->map.map);
 }
 
 void	init_elem(t_game *game)
