@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 15:29:12 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/13 16:45:50 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/14 18:07:41 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 int	argument_check(int ac, char **av)
 {
 	int	fd;
-	
+
 	if (ac != 2)
 		return (ft_putstr_fd("Wrong number of arguments\n", 2), 1);
 	if (ft_strncmp(av[1] + ft_strlen(av[1]) - 4, ".cub", 4) != 0)

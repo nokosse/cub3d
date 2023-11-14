@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 18:00:24 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/13 16:45:23 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/14 18:08:11 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	skip_lines_end(int fd)
 	char	*line;
 
 	line = get_next_line(fd);
-
 	while (line != NULL)
 	{
 		printf("???%s", line);
@@ -64,7 +63,6 @@ void	free_array(char	**array)
 
 void	init_t_parse(t_game *game)
 {
-	//game->parse.elem_lines = malloc(sizeof(int) * 6);
 	game->parse.elem_lines[0] = 0;
 	game->parse.elem_lines[1] = 0;
 	game->parse.elem_lines[2] = 0;

@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 12:57:10 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/13 16:44:30 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/14 18:09:26 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ int	check_xpm_extention(t_game *game)
 }
 
 /*check si le fichier est un repertoit et renvoie la string en cas d erreur*/
-char*	check_is_directory(t_game *game)
+char	*check_is_directory(t_game *game)
 {
 	int	fds[4];
-	
+
 	fds[0] = open(game->no, O_RDONLY | O_DIRECTORY);
 	if (fds[0] > 0)
 		return (close(fds[0]), game->no);
@@ -45,10 +45,10 @@ char*	check_is_directory(t_game *game)
 	return (NULL);
 }
 
-char*	check_file_exist(t_game *game)
+char	*check_file_exist(t_game *game)
 {
 	int	fds[4];
-	
+
 	fds[0] = open(game->no, O_RDONLY);
 	if (fds[0] == -1)
 		return (game->no);
@@ -64,11 +64,10 @@ char*	check_file_exist(t_game *game)
 	return (close(fds[0]), close(fds[1]), close(fds[2]), close(fds[3]), NULL);
 }
 
-
 int	check_correct_paths(t_game *game)
 {
-	char *ret;
-	
+	char	*ret;
+
 	ret = check_is_directory(game);
 	if (ret)
 		return (ft_putstr_fd(ret, 2), ft_putstr_fd(" is a directory\n", 2), 1);
