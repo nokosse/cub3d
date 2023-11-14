@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 18:13:19 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/14 17:56:16 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/14 18:03:35 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	check_characters(t_game *game)
 				&& game->map.map[i][j] != 'E' && game->map.map[i][j] != 'W'
 				&& game->map.map[i][j] != ' ')
 				return (1);
-			j++;	
+			j++;
 		}
 		i++;
 	}
