@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 16:28:55 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/13 18:38:45 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/14 16:13:47 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,32 @@ int	get_map(t_game *game, int start, int end)
 	return (1);
 }
 
+int	get_width_of_map(t_game *game)
+{
+	int	i;
+	int	j;
+	int	max;
+	int	tmp;
+
+	i = 0;
+	max = 0;
+	while (game->map.map[i] != NULL)
+	{
+		j = 0;
+		tmp = 0;
+		while (game->map.map[i][j] != '\n')
+		{
+			if (game->map.map[i][j] != ' ')
+				tmp++;
+			j++;
+		}
+		if (tmp > max)
+			max = tmp;
+		i++;
+	}
+	return (max);
+}
+
 int	parse_map(t_game *game)
 
 {
@@ -147,6 +173,7 @@ int	parse_map(t_game *game)
 		return (1);
 	if (get_map(game, game->map.map_start, game->map.map_end) == 0)
 		return (1);
+	game->map.map_width = get_width_of_map(game);
 	if (check_map(game) == 0)
 		return (1);
 	return (0);
