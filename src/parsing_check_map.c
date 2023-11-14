@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 18:13:19 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/13 19:02:17 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/14 15:45:21 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ int	check_player_count(t_game *game)
 int	check_player_position(t_game *game)
 {
 	return (1);
+	(void)game;
 }
 
 int	check_player(t_game *game)
