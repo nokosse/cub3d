@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:09:34 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/14 18:22:19 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/14 18:38:06 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	init_elem(t_game *game)
 	game->so = NULL;
 	game->we = NULL;
 	game->ea = NULL;
+	game->map.map = NULL;
 }
 
 int	main(int ac, char **av)
