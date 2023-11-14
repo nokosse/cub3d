@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:21:53 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/14 16:39:13 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/14 18:14:42 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,8 @@
 # include <stdio.h>     // printf
 # include <stdlib.h>    // malloc, free, exit
 # include <unistd.h>    // open, read, write, close
-#include <sys/stat.h>
-#include <fcntl.h>
-
+# include <sys/stat.h>
+# include <fcntl.h>
 # include <string.h>    // strerror
 # include <errno.h>     // perror
 
@@ -51,7 +50,12 @@ int		check_empty_lines(t_game *game);
 int		check_correct_paths(t_game *game);
 void	parse_error_msg(void);
 int		parse_map(t_game *game);
-int	    check_map(t_game *game);
-int 	check_player(t_game *game);
+int		check_map(t_game *game);
+int		check_player(t_game *game);
+void	skip_newlines(t_game *game, int *i);
+int		is_empty_line2(t_game *game, int i);
+int		is_empty_line(t_game *game, int i);
+int		get_map_size(t_game *game, int i);
+int		get_width_of_map(t_game *game);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/07 12:36:43 by kvisouth          #+#    #+#              #
-#    Updated: 2023/11/14 16:39:45 by kvisouth         ###   ########.fr        #
+#    Updated: 2023/11/14 18:15:15 by kvisouth         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRCS =	main.c \
 		parsing_paths.c \
 		parsing_error_message.c \
 		parsing_map.c \
+		parsing_map_utils.c \
 		parsing_check_map.c \
 		parsing_check_player.c \
 

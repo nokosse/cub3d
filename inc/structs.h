@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:30:41 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/13 18:51:49 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/14 18:13:51 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ typedef struct s_map
 // it's the closest element to the map.
 typedef struct s_parse
 {
-	//int			*elem_lines;
 	int			elem_lines[6];
 	int			last_elem;
 	int			last_line;
