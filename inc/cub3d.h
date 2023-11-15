@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:21:53 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/14 18:14:42 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/15 16:06:18 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,6 @@ int		is_empty_line2(t_game *game, int i);
 int		is_empty_line(t_game *game, int i);
 int		get_map_size(t_game *game, int i);
 int		get_width_of_map(t_game *game);
+int		only_empty_lines_left(t_game *game, int i);
 
 #endif
