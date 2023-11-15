@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 16:28:34 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/15 16:23:13 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/15 18:44:36 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ int	search_elem(char *elem, t_game *game)
 		}
 		i++;
 	}
+	ft_putstr_fd("Error\nIncorrect element\n", 2);
 	return (0);
 }
 
@@ -98,17 +99,17 @@ int	parse_map_info(t_game *game)
 {
 	init_t_parse(game);
 	if (search_elem("NO", game) == 0)
-		return (ft_putstr_fd("erreur NO\n", 2), 1);
+		return (1);
 	if (search_elem("SO", game) == 0)
-		return (ft_putstr_fd("erreur SO\n", 2), 1);
+		return (1);
 	if (search_elem("WE", game) == 0)
-		return (ft_putstr_fd("erreur WE\n", 2), 1);
+		return (1);
 	if (search_elem("EA", game) == 0)
-		return (ft_putstr_fd("erreur EA\n", 2), 1);
+		return (1);
 	if (search_elem("F", game) == 0)
-		return (ft_putstr_fd("erreur F\n", 2), 1);
+		return (1);
 	if (search_elem("C", game) == 0)
-		return (ft_putstr_fd("erreur C\n", 2), 1);
+		return (1);
 	if (check_empty_lines(game) == 0)
 		return (1);
 	if (check_correct_paths(game))

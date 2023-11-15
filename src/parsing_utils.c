@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:57:04 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/10 14:36:16 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/15 18:50:02 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,9 @@ int	check_empty_lines(t_game *game)
 			|| i == game->parse.elem_lines[5])
 			i++;
 		if (game->file_cont[i][j] != '\n')
-			return (0);
+			return (ft_putstr_fd("Error\nEmpty lines\n", 1), 0);
 	}
 	if (i - 1 != game->parse.last_elem)
-		return (0);
+		return (ft_putstr_fd("Error\nEmpty lines\n", 1), 0);
 	return (1);
 }

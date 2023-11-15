@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 16:28:55 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/15 17:44:23 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/15 18:32:03 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	set_map_start(t_game *game, int i)
 		game->map.map_start = i;
 		return (1);
 	}
+	ft_putstr_fd("Error\nInvalid map\n", 2);
 	return (0);
 }
 
@@ -50,6 +51,7 @@ int	check_garbage(t_game *game, int a, int b)
 	{
 		if (is_empty_line2(game, a) == 0)
 		{
+			ft_putstr_fd("Error\nGarbage characters after map\n", 2);
 			return (0);
 		}
 		a++;
@@ -96,12 +98,12 @@ int	parse_map(t_game *game)
 	if (set_map_start(game, i) == 0)
 		return (1);
 	if (get_map_size(game, i) < 3)
-		return (1);
+		return (ft_putstr_fd("Error\nInvalid size or junk characters\n", 2), 1);
 	game->map.map_end = (game->map.map_start + game->map.map_height) - 1;
 	if (check_garbage(game, game->map.map_end, game->parse.last_line) == 0)
 		return (1);
 	if (get_map(game, game->map.map_start, game->map.map_end) == 0)
-		return (1);
+		return (ft_putstr_fd("Error\nMalloc error\n", 2), 1);
 	game->map.map_width = get_width_of_map(game);
 	if (check_map(game) == 0)
 		return (1);

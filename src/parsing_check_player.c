@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 16:37:31 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/15 18:04:39 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/15 18:22:03 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,14 @@ int	check_player_position(t_game *game)
 int	check_player(t_game *game)
 {
 	if (check_player_count(game))
+	{
+		ft_putstr_fd("Error\nInvalid number of players\n", 2);
 		return (1);
+	}
 	if (check_player_position(game))
+	{
+		ft_putstr_fd("Error\nInvalid player position\n", 2);
 		return (1);
+	}
 	return (0);
 }

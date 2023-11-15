@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 09:31:13 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/15 16:22:22 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/15 18:46:09 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,14 @@ int	check_valid_rgb_number(char *str, t_game *game, char *elem)
 int	parse_rgb(char *str, t_game *game, char *elem)
 {
 	if (check_string_valid(str) == 0)
+	{
+		ft_putstr_fd("Error\nIncorrect format R,G,B\n", 2);
 		return (0);
+	}
 	if (check_valid_rgb_number(str, game, elem) == 0)
+	{
+		ft_putstr_fd("Error\nIncorrect RGB values\n", 2);
 		return (0);
+	}
 	return (1);
 }

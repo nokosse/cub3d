@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 18:13:19 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/15 18:03:57 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/15 18:19:43 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	check_characters(t_game *game)
 				&& game->map.map[i][j] != 'E' && game->map.map[i][j] != 'W'
 				&& game->map.map[i][j] != ' ')
 			{
+				ft_putstr_fd("Error\nInvalid character in map\n", 2);
 				return (1);
 			}
 			j++;
@@ -56,7 +57,6 @@ int	check_around_index(t_map map, int i, int j)
 	if (map.map[i + 1][j] == '\0' || map.map[i - 1][j] == '\0')
 		return (1);
 	return (0);
-	(void)j;
 }
 
 // This function checks if the map is closed.
@@ -75,7 +75,10 @@ int	check_map_closed(t_game *game)
 			if (game->map.map[i][j] == '0')
 			{
 				if (check_around_index(game->map, i, j))
+				{
+					ft_putstr_fd("Error\nMap is not closed\n", 2);
 					return (1);
+				}
 			}
 			j++;
 		}
