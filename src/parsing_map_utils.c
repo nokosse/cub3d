@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 18:10:43 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/14 18:50:54 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/15 15:55:51 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,17 @@ int	is_empty_line(t_game *game, int i)
 	return (0);
 }
 
+int	only_empty_lines_left(t_game *game, int i)
+{
+	while (game->file_cont[i] != NULL)
+	{
+		if (is_empty_line(game, i) == 0)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 // Will get the size of the map (map_height)
 int	get_map_size(t_game *game, int i)
 {
@@ -47,20 +58,17 @@ int	get_map_size(t_game *game, int i)
 
 	j = 0;
 	size = 0;
-	while (game->file_cont[i] != NULL)
+	while (i < game->parse.last_line)
 	{
 		j = 0;
 		skip_spaces(game->file_cont[i], &j);
-		if (game->file_cont[i][j] != '1' && game->file_cont[i][j] != '0')
+		if (game->file_cont[i][j] != '1' && game->file_cont[i][j] != '0'
+			&& game->file_cont[i][j] != '\n' && game->file_cont[i][j] != ' ')
 		{
-			if (game->file_cont[i][0] == '\n')
-			{
-				game->map.map_height = size;
-				return (size);
-			}
-			else
-				return (0);
+			return (0);
 		}
+		if (only_empty_lines_left(game, i) == 1)
+			break ;
 		size++;
 		i++;
 	}
