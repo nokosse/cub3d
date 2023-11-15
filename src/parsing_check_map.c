@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 18:13:19 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/15 16:24:42 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/15 17:35:51 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ int	check_characters(t_game *game)
 // It checks if the 0 is at the first line, last line, first column or last
 // Then it checks on the right if there is a \n, on the left if there is a ' '
 // Then it checks for ' ' on the top and the bottom of the 0.
-// Finally it does the same but for '\0' instead of ' '.
+// Then it does the same but for '\0' instead of ' '.
+// Finally it checks for \n on the top and the bottom of the 0.
 int	check_around_index(t_map map, int i, int j)
 {
 	if (i == 0 || i == map.map_height - 1 || j == 0 || j == map.map_width - 1)
@@ -53,8 +54,9 @@ int	check_around_index(t_map map, int i, int j)
 		return (1);
 	if (map.map[i + 1][j] == '\0' || map.map[i - 1][j] == '\0')
 		return (1);
+	if (map.map[i + 1][j] == '\n' || map.map[i - 1][j] == '\n')
+		return (1);
 	return (0);
-	(void)j;
 }
 
 // This function checks if the map is closed.
