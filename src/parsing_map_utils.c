@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 18:10:43 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/15 16:19:49 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/15 17:09:42 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,19 +76,19 @@ int	get_width_of_map(t_game *game)
 
 	i = 0;
 	max = 0;
-	while (game->map.map[i] != NULL)
+	while (i < game->map.map_height)
 	{
 		j = 0;
 		tmp = 0;
 		while (game->map.map[i][j] != '\n')
 		{
-			if (game->map.map[i][j] != ' ')
-				tmp++;
 			j++;
+			tmp++;
 		}
 		if (tmp > max)
 			max = tmp;
 		i++;
 	}
+	printf("max width: %d\n", max);
 	return (max);
 }
