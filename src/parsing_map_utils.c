@@ -6,12 +6,13 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 18:10:43 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/15 16:05:25 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/15 16:19:49 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
+// Will increase i until it reaches a line with only \n
 void	skip_newlines(t_game *game, int *i)
 {
 	while (game->file_cont[*i][0] == '\n')

@@ -6,12 +6,13 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 09:31:13 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/13 16:45:35 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/15 16:22:22 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
+// This function checks if we have a formar R,G,B for F and C
 int	check_string_valid(char *str)
 {
 	int	i;
@@ -41,6 +42,7 @@ int	check_string_valid(char *str)
 	return (1);
 }
 
+// This function stores in C or F the rgb values depending on the elem
 void	store_rgb_values(char **rgb, t_game *game, char *elem)
 {
 	if (elem[0] == 'F')
@@ -57,6 +59,7 @@ void	store_rgb_values(char **rgb, t_game *game, char *elem)
 	}
 }
 
+// This function checks if the rgb values are between 0 and 255
 int	check_valid_rgb_number(char *str, t_game *game, char *elem)
 {
 	char	**rgb;

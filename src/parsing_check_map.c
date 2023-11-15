@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 18:13:19 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/14 18:03:35 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/15 16:24:42 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ int	check_around_index(t_map map, int i, int j)
 	(void)j;
 }
 
+// This function checks if the map is closed.
+// What really checks is the function above.
 int	check_map_closed(t_game *game)
 {
 	int	i;

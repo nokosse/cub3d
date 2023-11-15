@@ -6,12 +6,13 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 15:27:14 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/14 18:47:59 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/15 16:20:08 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
+// Counts the number of lines in the file.
 int	count_file_lines(char *file)
 {
 	int		fd;

@@ -6,12 +6,14 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 16:28:55 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/15 16:04:21 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/15 16:23:37 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
+// Sets the last line of the file.
+// So we dont have to loop until we have a NULL but until we reach this value.
 void	set_last_line(t_game *game)
 {
 	int	i;
@@ -22,6 +24,8 @@ void	set_last_line(t_game *game)
 	game->parse.last_line = i;
 }
 
+// It sets the first line of the map.
+// It must be a line with only 1 and 0
 int	set_map_start(t_game *game, int i)
 {
 	int	j;
@@ -54,6 +58,9 @@ int	check_garbage(t_game *game, int a, int b)
 }
 
 // Stores the map in a char ** (game->map.map)
+// Copies all the lines of the files from line 'start' to line 'end'
+// start being the line where the map starts
+// end being the line where the map ends
 int	get_map(t_game *game, int start, int end)
 {
 	int	i;

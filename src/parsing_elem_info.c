@@ -6,12 +6,13 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 16:28:34 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/14 18:06:13 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/15 16:23:13 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
+// This function will store the path in the right variable depending on the elem
 void	store_path(char *path, t_game *game, char *elem)
 {
 	if (elem[0] == 'N' && elem[1] == 'O')
@@ -24,6 +25,7 @@ void	store_path(char *path, t_game *game, char *elem)
 		game->ea = path;
 }
 
+// This function will parse the path to the textures for NO, SO, WE, EA
 int	parse_path(char *str, t_game *game, char *elem)
 {
 	int		i;
@@ -48,6 +50,7 @@ int	parse_path(char *str, t_game *game, char *elem)
 	return (1);
 }
 
+// This function will redirect to the right function depending on the elem
 int	rgb_or_path(t_game *game, char *elem, int i, int j)
 {
 	if (elem[0] != 'F' && elem[0] != 'C')
