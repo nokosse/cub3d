@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 16:37:31 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/14 16:40:13 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/15 18:04:39 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	check_player_count(t_game *game)
 
 	i = 0;
 	count = 0;
-	while (game->map.map[i] != NULL)
+	while (i < game->map.map_height - 1)
 	{
 		j = -1;
 		while (game->map.map[i][++j] != '\n')

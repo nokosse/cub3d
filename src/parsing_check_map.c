@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 18:13:19 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/15 18:00:40 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/15 18:03:57 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	check_characters(t_game *game)
 		j = 0;
 		while (game->map.map[i][j] != '\n' && game->map.map[i][j] != '\0')
 		{
-			printf("current character : %c\n", game->map.map[i][j]);
 			if (game->map.map[i][j] != '1' && game->map.map[i][j] != '0'
 				&& game->map.map[i][j] != 'N' && game->map.map[i][j] != 'S'
 				&& game->map.map[i][j] != 'E' && game->map.map[i][j] != 'W'
