@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:09:34 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/15 18:51:05 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/16 15:23:25 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	init_elem(t_game *game)
 int	main(int ac, char **av)
 {
 	t_game	game;
+	void	*mlx_win;
 
 	init_elem(&game);
 	if (ft_parse(ac, av, &game))
@@ -46,6 +47,10 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	printf("Parsing OK\n");
+	game.mlx = mlx_init();
+	mlx_win = mlx_new_window(game.mlx, 1600, 900, "Hello world!");
+	mlx_loop(game.mlx);
 	free_elem(&game);
 	return (0);
+	(void)mlx_win;
 }

@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 15:27:14 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/15 16:20:08 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/16 15:31:57 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,19 +80,19 @@ int	ft_parse(int ac, char **av, t_game *game)
 	if (argument_check(ac, av))
 		return (1);
 	game->map_name = av[1];
-	game->file_cont = get_file_content(av[1]);
-	if (game->file_cont == NULL)
+	game->parse.file_cont = get_file_content(av[1]);
+	if (game->parse.file_cont == NULL)
 		return (1);
 	if (parse_map_info(game))
 	{
-		free_array(game->file_cont);
+		free_array(game->parse.file_cont);
 		return (1);
 	}
 	if (parse_map(game))
 	{
-		free_array(game->file_cont);
+		free_array(game->parse.file_cont);
 		return (1);
 	}
-	free_array(game->file_cont);
+	free_array(game->parse.file_cont);
 	return (0);
 }

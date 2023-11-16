@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 18:10:43 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/15 18:24:58 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/16 15:35:36 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 // Will increase i until it reaches a line with only \n
 void	skip_newlines(t_game *game, int *i)
 {
-	while (game->file_cont[*i][0] == '\n')
+	while (game->parse.file_cont[*i][0] == '\n')
 		(*i)++;
 }
 
 // Will check if line (i) is completely empty (only \n at [0])
 int	is_empty_line2(t_game *game, int i)
 {
-	if (game->file_cont[i][0] == '\n')
+	if (game->parse.file_cont[i][0] == '\n')
 		return (1);
 	return (0);
 }
@@ -33,9 +33,9 @@ int	is_empty_line(t_game *game, int i)
 	int	j;
 
 	j = 0;
-	while (game->file_cont[i][j] == ' ')
+	while (game->parse.file_cont[i][j] == ' ')
 		j++;
-	if (game->file_cont[i][j] == '\n')
+	if (game->parse.file_cont[i][j] == '\n')
 		return (1);
 	return (0);
 }
@@ -51,9 +51,11 @@ int	get_map_size(t_game *game, int i)
 	while (i < game->parse.last_line)
 	{
 		j = 0;
-		skip_spaces(game->file_cont[i], &j);
-		if (game->file_cont[i][j] != '1' && game->file_cont[i][j] != '0'
-			&& game->file_cont[i][j] != '\n' && game->file_cont[i][j] != ' ')
+		skip_spaces(game->parse.file_cont[i], &j);
+		if (game->parse.file_cont[i][j] != '1'
+			&& game->parse.file_cont[i][j] != '0'
+			&& game->parse.file_cont[i][j] != '\n'
+			&& game->parse.file_cont[i][j] != ' ')
 		{
 			return (0);
 		}

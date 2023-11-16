@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 16:28:34 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/15 18:44:36 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/16 15:37:21 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,35 +55,37 @@ int	rgb_or_path(t_game *game, char *elem, int i, int j)
 {
 	if (elem[0] != 'F' && elem[0] != 'C')
 	{
-		if (parse_path(game->file_cont[i] + j, game, elem) == 0)
+		if (parse_path(game->parse.file_cont[i] + j, game, elem) == 0)
 			return (0);
 	}
 	else
 	{
-		if (parse_rgb(game->file_cont[i] + j, game, elem) == 0)
+		if (parse_rgb(game->parse.file_cont[i] + j, game, elem) == 0)
 			return (0);
 	}
 	return (1);
 }
 
-// Will search in game->file_cont (is a char**) for *elem.
+// Will search in game->parse.file_cont (is a char**) for *elem.
 // If it finds it, it will parse the path.
 int	search_elem(char *elem, t_game *game)
 {
 	int	i;
 	int	j;
+	int	elem_len;
 
 	i = 0;
-	while (game->file_cont[i] != NULL)
+	elem_len = ft_strlen(elem);
+	while (game->parse.file_cont[i] != NULL)
 	{
 		j = 0;
-		skip_spaces(game->file_cont[i], &j);
-		if ((ft_strncmp(game->file_cont[i] + j, elem, ft_strlen(elem)) == 0)
-			&& (game->file_cont[i][j + ft_strlen(elem)] == ' '
-			|| game->file_cont[i][j + ft_strlen(elem)] == '\t'))
+		skip_spaces(game->parse.file_cont[i], &j);
+		if ((ft_strncmp(game->parse.file_cont[i] + j, elem, elem_len) == 0)
+			&& (game->parse.file_cont[i][j + ft_strlen(elem)] == ' '
+			|| game->parse.file_cont[i][j + ft_strlen(elem)] == '\t'))
 		{
 			j += ft_strlen(elem);
-			skip_spaces(game->file_cont[i], &j);
+			skip_spaces(game->parse.file_cont[i], &j);
 			if (rgb_or_path(game, elem, i, j) == 0)
 				return (0);
 			set_line(elem, game, i);

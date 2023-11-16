@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:57:04 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/15 18:53:39 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/16 15:31:57 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	check_empty_lines(t_game *game)
 	while (i <= game->parse.last_elem)
 	{
 		j = 0;
-		while (game->file_cont[i][j] == '\n')
+		while (game->parse.file_cont[i][j] == '\n')
 			i++;
 		while (i == game->parse.elem_lines[0]
 			|| i == game->parse.elem_lines[1]
@@ -64,7 +64,7 @@ int	check_empty_lines(t_game *game)
 			|| i == game->parse.elem_lines[4]
 			|| i == game->parse.elem_lines[5])
 			i++;
-		if (game->file_cont[i][j] != '\n')
+		if (game->parse.file_cont[i][j] != '\n')
 			return (ft_putstr_fd("Error\nIncorrect elements\n", 1), 0);
 	}
 	if (i - 1 != game->parse.last_elem)

@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 16:28:55 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/15 18:32:03 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/16 15:35:14 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	set_last_line(t_game *game)
 	int	i;
 
 	i = game->parse.last_elem;
-	while (game->file_cont[i] != NULL)
+	while (game->parse.file_cont[i] != NULL)
 		i++;
 	game->parse.last_line = i;
 }
@@ -31,9 +31,10 @@ int	set_map_start(t_game *game, int i)
 	int	j;
 
 	j = 0;
-	while (game->file_cont[i][j] == ' ')
+	while (game->parse.file_cont[i][j] == ' ')
 		j++;
-	if (game->file_cont[i][j] == '1' || game->file_cont[i][j] == '0')
+	if (game->parse.file_cont[i][j] == '1'
+		|| game->parse.file_cont[i][j] == '0')
 	{
 		game->map.map_start = i;
 		return (1);
@@ -75,7 +76,7 @@ int	get_map(t_game *game, int start, int end)
 		return (0);
 	while (i <= end)
 	{
-		game->map.map[j] = ft_strdup(game->file_cont[i]);
+		game->map.map[j] = ft_strdup(game->parse.file_cont[i]);
 		if (game->map.map[j] == NULL)
 		{
 			free_array(game->map.map);

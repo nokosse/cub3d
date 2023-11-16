@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:30:41 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/14 18:13:51 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/16 15:31:58 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,20 +72,27 @@ typedef struct s_parse
 	int			elem_lines[6];
 	int			last_elem;
 	int			last_line;
+	char		**file_cont;
 }				t_parse;
+
+// typedef struct s_elem
+// {
+
+// }				t_elem;
 
 // t_game is the main strucure.
 // it includes all the others structures.
 typedef struct s_game
 {
+	void		*mlx;
 	char		*map_name;
-	char		**file_cont;
 	char		*no;
 	char		*so;
 	char		*we;
 	char		*ea;
 	t_rgb		floor;
 	t_rgb		ceil;
+	// t_elem		elem;
 	t_map		map;
 	t_parse		parse;
 	t_player	player;
