@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:09:34 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/16 18:17:47 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/16 18:19:47 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	main(int ac, char **av)
 		return (free_elem(&game), 1);
 	printf("Parsing OK\n");
 	game.mlx = mlx_init();
-	game.win.mlx_w = mlx_new_window(game.mlx, game.win.w, game.win.h, "Cub3D");
+	game.win.mlx_w = mlx_new_window(game.mlx, game.win.w, game.win.h, "cub3d");
 	mlx_loop(game.mlx);
 	return (free_elem(&game), 0);
 }
