@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 09:31:13 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/15 18:46:09 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/16 15:43:39 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,15 @@ void	store_rgb_values(char **rgb, t_game *game, char *elem)
 {
 	if (elem[0] == 'F')
 	{
-		game->floor.r = ft_atoi(rgb[0]);
-		game->floor.g = ft_atoi(rgb[1]);
-		game->floor.b = ft_atoi(rgb[2]);
+		game->elem.floor.r = ft_atoi(rgb[0]);
+		game->elem.floor.g = ft_atoi(rgb[1]);
+		game->elem.floor.b = ft_atoi(rgb[2]);
 	}
 	else if (elem[0] == 'C')
 	{
-		game->ceil.r = ft_atoi(rgb[0]);
-		game->ceil.g = ft_atoi(rgb[1]);
-		game->ceil.b = ft_atoi(rgb[2]);
+		game->elem.ceil.r = ft_atoi(rgb[0]);
+		game->elem.ceil.g = ft_atoi(rgb[1]);
+		game->elem.ceil.b = ft_atoi(rgb[2]);
 	}
 }
 

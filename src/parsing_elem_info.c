@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 16:28:34 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/16 15:37:21 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/16 15:42:03 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 void	store_path(char *path, t_game *game, char *elem)
 {
 	if (elem[0] == 'N' && elem[1] == 'O')
-		game->no = path;
+		game->elem.no = path;
 	else if (elem[0] == 'S' && elem[1] == 'O')
-		game->so = path;
+		game->elem.so = path;
 	else if (elem[0] == 'W' && elem[1] == 'E')
-		game->we = path;
+		game->elem.we = path;
 	else if (elem[0] == 'E' && elem[1] == 'A')
-		game->ea = path;
+		game->elem.ea = path;
 }
 
 // This function will parse the path to the textures for NO, SO, WE, EA
