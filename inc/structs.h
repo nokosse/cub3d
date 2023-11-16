@@ -6,26 +6,12 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:30:41 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/16 15:38:30 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/16 15:50:15 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
-
-// All the content of a map :
-// The argument, it is the map file.
-// The textures paths :
-//      - NO ./path_to_the_north_texture
-//      - SO ./path_to_the_south_texture
-//      - WE ./path_to_the_west_texture
-//      - EA ./path_to_the_east_texture
-// The color of the ceiling and the floor :
-//      - F 220,100,0
-//      - C 225,30,0
-// The map is composed of :
-// 1 and 0 : Walls and empty spaces
-// N, S, E, W : The player's starting position and orientation
 
 // t_rgb contains the 3 colors of the rgb format.
 // It is for the ceiling and the floor arguments.
@@ -37,8 +23,8 @@ typedef struct s_rgb
 }				t_rgb;
 
 // t_player contains all the informations about the player.
-// pos_x is the player position on the x axis.
-// pos_y is the player position on the y axis.
+// pos_x is the player position on the x axis. (Up and down)
+// pos_y is the player position on the y axis. (Left and right)
 // It is the position of the player in game->map.map[x][y]
 typedef struct s_player
 {
@@ -75,6 +61,7 @@ typedef struct s_parse
 	char		**file_cont;
 }				t_parse;
 
+// t_elem contains all the informations about the elements and their arguments
 typedef struct s_elem
 {
 	char		*no;
