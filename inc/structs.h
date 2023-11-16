@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:30:41 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/16 15:53:41 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/16 17:38:52 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,25 @@ typedef struct s_elem
 	t_rgb		ceil;
 }				t_elem;
 
+// t_win contains all the informations about the window./
+// mlx_w is the mlx window.
+// w is the width of the window.
+// h is the height of the window.
+// (Line too long norm issues)
+typedef struct s_win
+{
+	void	*mlx_w;
+	int		w;
+	int		h;
+}				t_win;
+
 // t_game is the main strucure.
 // it includes all the others structures.
 typedef struct s_game
 {
 	void		*mlx;
 	char		*map_name;
+	t_win		win;
 	t_elem		elem;
 	t_map		map;
 	t_parse		parse;
