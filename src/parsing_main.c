@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 15:27:14 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/16 15:48:16 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/17 14:46:36 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,21 @@ char	**get_file_content(char *file)
 	return (skip_lines_end(fd), close(fd), file_content);
 }
 
+void	ft_swap(int a, int b)
+{
+	int	tmp;
+
+	tmp = a;
+	a = b;
+	b = tmp;
+}
+
 // 1. We parse the argument
 // 2. We parse the elements
 // 3. We parse the map itself
+// ( I swapped x and y because I forgot what absis and ordinate were )
+// ( I initially thought that x was the vertical axis
+// and y the horizontal one but it's the opposite )
 int	ft_parse(int ac, char **av, t_game *game)
 {
 	if (argument_check(ac, av))
@@ -94,5 +106,6 @@ int	ft_parse(int ac, char **av, t_game *game)
 		return (1);
 	}
 	free_array(game->parse.file_cont);
+	ft_swap(game->player.pos_x, game->player.pos_y);
 	return (0);
 }

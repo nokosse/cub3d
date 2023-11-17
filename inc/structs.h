@@ -6,7 +6,7 @@
 /*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:30:41 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/16 17:38:52 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/17 14:47:16 by kvisouth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ typedef struct s_rgb
 }				t_rgb;
 
 // t_player contains all the informations about the player.
-// pos_x is the player position on the x axis. (Up and down)
-// pos_y is the player position on the y axis. (Left and right)
+// pos_x is the player position on the x axis. (Left - Right Abcis)
+// pos_y is the player position on the y axis. (Up - Down Ordinate)
 // It is the position of the player in game->map.map[x][y]
 typedef struct s_player
 {
