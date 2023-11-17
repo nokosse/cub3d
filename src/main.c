@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:09:34 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/16 18:19:47 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/11/17 19:47:35 by kscordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,7 @@ void	free_elem(t_game *game)
 
 void	init_struct(t_game *game)
 {
-	game->elem.no = NULL;
-	game->elem.so = NULL;
-	game->elem.we = NULL;
-	game->elem.ea = NULL;
-	game->map.map = NULL;
+	ft_bzero(game, sizeof(t_game));
 	game->win.w = 1600;
 	game->win.h = 900;
 }
@@ -46,7 +42,11 @@ int	main(int ac, char **av)
 		return (free_elem(&game), 1);
 	printf("Parsing OK\n");
 	game.mlx = mlx_init();
+	if (!game.mlx)
+		return (free_elem(&game), 1);
 	game.win.mlx_w = mlx_new_window(game.mlx, game.win.w, game.win.h, "cub3d");
+	if (game.win.mlx_w);
+		(free_elem(&game), 1);
 	mlx_loop(game.mlx);
 	return (free_elem(&game), 0);
 }
