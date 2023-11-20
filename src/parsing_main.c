@@ -91,7 +91,6 @@ int	ft_parse(int ac, char **av, t_game *game)
 {
 	if (argument_check(ac, av))
 		return (1);
-	game->map_name = av[1];
 	game->parse.file_cont = get_file_content(av[1]);
 	if (game->parse.file_cont == NULL)
 		return (1);

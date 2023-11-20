@@ -48,28 +48,3 @@ void	skip_spaces(char *line, int *i)
 		(*i)++;
 	}
 }
-
-// This function will free a char ** AND free the array itself
-void	free_array(char	**array)
-{
-	int	i;
-
-	i = 0;
-	while (array[i] != NULL)
-	{
-		free(array[i]);
-		i++;
-	}
-	free(array);
-}
-
-// This function initializes elem_lines.
-void	init_t_parse(t_game *game)
-{
-	game->parse.elem_lines[0] = 0;
-	game->parse.elem_lines[1] = 0;
-	game->parse.elem_lines[2] = 0;
-	game->parse.elem_lines[3] = 0;
-	game->parse.elem_lines[4] = 0;
-	game->parse.elem_lines[5] = 0;
-}

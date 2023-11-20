@@ -12,41 +12,60 @@
 
 #include "../inc/cub3d.h"
 
-void	free_elem(t_game *game)
+
+
+
+int	load_element(t_game *game)
 {
-	if (game->elem.no != NULL)
-		free(game->elem.no);
-	if (game->elem.so != NULL)
-		free(game->elem.so);
-	if (game->elem.we != NULL)
-		free(game->elem.we);
-	if (game->elem.ea != NULL)
-		free(game->elem.ea);
-	if (game->map.map != NULL)
-		free_array(game->map.map);
+	game->no.img = mlx_xpm_file_to_image(game->mlx, game->parse.no,
+			&game->no.width, &game->no.height);
+	if (!game->no.img)
+		return (perror("mlx_xpm_file_to_image"), 1);
+	game->so.img = mlx_xpm_file_to_image(game->mlx, game->parse.so,
+			&game->so.width, &game->so.height);
+	if (!game->so.img)
+		return (perror("mlx_xpm_file_to_image"), 1);
+	game->we.img = mlx_xpm_file_to_image(game->mlx, game->parse.we,
+			&game->we.width, &game->we.height);
+	if (!game->we.img)
+		return (perror("mlx_xpm_file_to_image"), 1);
+	game->ea.img = mlx_xpm_file_to_image(game->mlx, game->parse.ea,
+			&game->ea.width, &game->ea.height);
+	if (!game->ea.img)
+		return (perror("mlx_xpm_file_to_image"), 1);
+	return (0);
 }
 
-void	init_struct(t_game *game)
+
+int	init_struct(t_game *game)
 {
 	ft_bzero(game, sizeof(t_game));
-	game->win.w = 1600;
-	game->win.h = 900;
+	game->mlx = mlx_init();
+	if (!game->mlx)
+		return (free_elem(game), 1);
+	mlx_get_screen_size(game->mlx, &game->win.w, &game->win.h);
+	game->win.w /= 2;
+	game->win.h -= 100;
+	return (0);
 }
 
 int	main(int ac, char **av)
 {
 	t_game	game;
 
-	init_struct(&game);
+	if (init_struct(&game))
+		return (1);
 	if (ft_parse(ac, av, &game))
-		return (free_elem(&game), 1);
+		return (free_all(&game), 1);
 	printf("Parsing OK\n");
-	game.mlx = mlx_init();
-	if (!game.mlx)
-		return (free_elem(&game), 1);
+	if (load_element(&game))
+		return (free_all(&game), 1);
 	game.win.mlx_w = mlx_new_window(game.mlx, game.win.w, game.win.h, "cub3d");
-	if (game.win.mlx_w);
-		(free_elem(&game), 1);
+	if (!game.win.mlx_w)
+		return (free_all(&game), 1);
+	
+	mlx_key_hook(game.win.mlx_w, &key_hook, &game);
+	mlx_hook(game.win.mlx_w, 17, 1L << 0, quit, &game);
 	mlx_loop(game.mlx);
-	return (free_elem(&game), 0);
+	return (free_all(&game), 0);
 }

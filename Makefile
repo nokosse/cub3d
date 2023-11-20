@@ -25,6 +25,8 @@ SRCS =	main.c \
 		parsing_map_utils2.c \
 		parsing_check_map.c \
 		parsing_check_player.c \
+		hook.c \
+		clean_all.c
 
 OBJS = $(addprefix obj/, $(notdir $(SRCS:.c=.o)))
 

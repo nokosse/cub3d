@@ -16,13 +16,13 @@
 void	store_path(char *path, t_game *game, char *elem)
 {
 	if (elem[0] == 'N' && elem[1] == 'O')
-		game->elem.no = path;
+		game->parse.no = path;
 	else if (elem[0] == 'S' && elem[1] == 'O')
-		game->elem.so = path;
+		game->parse.so = path;
 	else if (elem[0] == 'W' && elem[1] == 'E')
-		game->elem.we = path;
+		game->parse.we = path;
 	else if (elem[0] == 'E' && elem[1] == 'A')
-		game->elem.ea = path;
+		game->parse.ea = path;
 }
 
 // This function will parse the path to the textures for NO, SO, WE, EA
@@ -99,7 +99,6 @@ int	search_elem(char *elem, t_game *game)
 
 int	parse_map_info(t_game *game)
 {
-	init_t_parse(game);
 	if (search_elem("NO", game) == 0)
 		return (1);
 	if (search_elem("SO", game) == 0)

@@ -56,6 +56,10 @@ typedef struct s_map
 typedef struct s_parse
 {
 	int			elem_lines[6];
+	char		*no;
+	char		*so;
+	char		*we;
+	char		*ea;
 	int			last_elem;
 	int			last_line;
 	char		**file_cont;
@@ -64,10 +68,7 @@ typedef struct s_parse
 // t_elem contains all the informations about the elements and their arguments
 typedef struct s_elem
 {
-	char		*no;
-	char		*so;
-	char		*we;
-	char		*ea;
+
 	t_rgb		floor;
 	t_rgb		ceil;
 }				t_elem;
@@ -85,6 +86,8 @@ typedef struct s_img
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	int		height;
+	int		width;
 }		t_img;
 
 
@@ -100,8 +103,12 @@ typedef struct s_win
 typedef struct s_game
 {
 	void		*mlx;
-	char		*map_name;
 	t_win		win;
+	t_img		no;
+	t_img		so;
+	t_img		we;
+	t_img		ea;
+	t_img		image;
 	t_elem		elem;
 	t_map		map;
 	t_parse		parse;

@@ -42,10 +42,11 @@ int		parse_map_info(t_game *game);
 void	skip_lines(int fd);
 void	skip_lines_end(int fd);
 void	skip_spaces(char *line, int *i);
-void	free_array(char	**array);
 int		parse_rgb(char *str, t_game *game, char *elem);
 void	set_line(char *elem, t_game *game, int i);
-void	init_t_parse(t_game *game);
+
+// void	init_t_parse(t_game *game);
+
 int		check_empty_lines(t_game *game);
 int		check_correct_paths(t_game *game);
 void	parse_error_msg(void);
@@ -58,5 +59,15 @@ int		is_empty_line(t_game *game, int i);
 int		get_map_size(t_game *game, int i);
 int		get_width_of_map(t_game *game);
 int		only_empty_lines_left(t_game *game, int i);
+
+// hook
+int	key_hook(int key, t_game *data);
+int	quit(t_game *game);
+
+// clean the structure
+void	free_array(char	**array);
+void	free_elem(t_game *game);
+void	free_mlx(t_game *game);
+void	free_all(t_game *game);
 
 #endif
