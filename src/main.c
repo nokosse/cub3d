@@ -63,7 +63,8 @@ int	main(int ac, char **av)
 	game.win.mlx_w = mlx_new_window(game.mlx, game.win.w, game.win.h, "cub3d");
 	if (!game.win.mlx_w)
 		return (free_all(&game), 1);
-	
+	printf("player posx = %d posy = %d et orient = %c\n", game.player.pos_x, game.player.pos_y, game.player.orient);
+	the_game(&game);
 	mlx_key_hook(game.win.mlx_w, &key_hook, &game);
 	mlx_hook(game.win.mlx_w, 17, 1L << 0, quit, &game);
 	mlx_loop(game.mlx);

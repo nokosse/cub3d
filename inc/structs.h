@@ -42,7 +42,7 @@ typedef struct s_map
 	int			map_end;
 	int			map_width;
 	int			map_height;
-	t_player	player;
+//	t_player	player;
 }				t_map;
 
 // t_parse contains all the informations about the parsing.
@@ -65,13 +65,6 @@ typedef struct s_parse
 	char		**file_cont;
 }				t_parse;
 
-// t_elem contains all the informations about the elements and their arguments
-typedef struct s_elem
-{
-
-	t_rgb		floor;
-	t_rgb		ceil;
-}				t_elem;
 
 // t_win contains all the informations about the window./
 // mlx_w is the mlx window.
@@ -98,6 +91,26 @@ typedef struct s_win
 	int		h;
 }				t_win;
 
+typedef struct s_ray
+{
+	double	posx;
+	double	posy;
+	double	dirx;
+	double	diry;
+	double	planex;
+	double	planey;
+	double	raydirx;
+	double	raydiry;
+	double	camerax;
+	int		mapx;
+	int		mapy;
+	double	sidedistx;
+	double	sidedisty;
+	double	deltadistx;
+	double	deltadisty;
+}			t_ray;
+
+
 // t_game is the main strucure.
 // it includes all the others structures.
 typedef struct s_game
@@ -109,7 +122,9 @@ typedef struct s_game
 	t_img		we;
 	t_img		ea;
 	t_img		image;
-	t_elem		elem;
+	t_rgb		floor;
+	t_rgb		ceil;
+	t_ray		ray;
 	t_map		map;
 	t_parse		parse;
 	t_player	player;

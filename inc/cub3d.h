@@ -70,4 +70,11 @@ void	free_elem(t_game *game);
 void	free_mlx(t_game *game);
 void	free_all(t_game *game);
 
+// exec
+int the_game(t_game *game);
+
+// put_pixel
+int	makecolor(int t, int red, int green, int blue);
+void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
+
 #endif

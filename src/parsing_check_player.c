@@ -31,7 +31,9 @@ int	check_player_count(t_game *game)
 			{
 				count++;
 				game->player.pos_x = i;
+				game->ray.posx = i;
 				game->player.pos_y = j;
+				game->ray.posy = j;
 				game->player.orient = game->map.map[i][j];
 			}
 		}
