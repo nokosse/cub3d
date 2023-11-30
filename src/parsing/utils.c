@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cub3d.h"
+#include "../../inc/cub3d.h"
 
 // This function will skip all the lines but will free the lines as well
 void	skip_lines_end(int fd)

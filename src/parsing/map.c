@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cub3d.h"
+#include "../../inc/cub3d.h"
 
 // Sets the last line of the file.
 // So we dont have to loop until we have a NULL but until we reach this value.

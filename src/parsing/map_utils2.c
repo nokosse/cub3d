@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cub3d.h"
+#include "../../inc/cub3d.h"
 
 // Checks if there is only empty lines after the map.
 int	only_empty_lines_left(t_game *game, int i)

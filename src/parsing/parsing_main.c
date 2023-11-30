@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cub3d.h"
+#include "../../inc/cub3d.h"
 
 // Counts the number of lines in the file.
 int	count_file_lines(char *file)
@@ -105,6 +105,6 @@ int	ft_parse(int ac, char **av, t_game *game)
 		return (1);
 	}
 	free_array(game->parse.file_cont);
-	ft_swap(game->player.pos_x, game->player.pos_y);
+	ft_swap(game->ray.posx, game->ray.posy);
 	return (0);
 }

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cub3d.h"
+#include "../../inc/cub3d.h"
 
 // Will increase i until it reaches a line with only \n
 void	skip_newlines(t_game *game, int *i)

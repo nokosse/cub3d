@@ -13,21 +13,22 @@
 NAME = cub3d
 
 SRCS =	main.c \
-		parsing_main.c \
-		parsing_argument.c \
-		parsing_elem_info.c \
-		parsing_elem_utils.c \
-		parsing_elem_rgb.c \
-		parsing_utils.c \
-		parsing_paths.c \
-		parsing_map.c \
-		parsing_map_utils.c \
-		parsing_map_utils2.c \
-		parsing_check_map.c \
-		parsing_check_player.c \
+		parsing/parsing_main.c \
+		parsing/argument.c \
+		parsing/elem_info.c \
+		parsing/elem_utils.c \
+		parsing/elem_rgb.c \
+		parsing/utils.c \
+		parsing/paths.c \
+		parsing/map.c \
+		parsing/map_utils.c \
+		parsing/map_utils2.c \
+		parsing/check_map.c \
+		parsing/check_player.c \
 		hook.c \
 		clean_all.c \
 		put_pixel.c \
+		exec.c
 		
 
 OBJS = $(addprefix obj/, $(notdir $(SRCS:.c=.o)))
@@ -46,6 +47,10 @@ $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L libft -lft -L minilibx-linux -lmlx -lXext -lX11 -lm
 
 obj/%.o: src/%.c
+	@mkdir -p obj
+	@$(CC) $(CFLAGS) -c $< -o $@
+
+obj/%.o: src/parsing/%.c
 	@mkdir -p obj
 	@$(CC) $(CFLAGS) -c $< -o $@
 

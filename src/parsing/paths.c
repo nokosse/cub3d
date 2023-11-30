@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cub3d.h"
+#include "../../inc/cub3d.h"
 
 // Checks if the paths have the extension .xpm
 int	check_xpm_extention(t_game *game)

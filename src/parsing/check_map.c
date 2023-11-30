@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cub3d.h"
+#include "../../inc/cub3d.h"
 
 // Checks if the map only contains authorized characters : '0', '1', '2', 'N'
 // 'S', 'E', 'W' and ' '

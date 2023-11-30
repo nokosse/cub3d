@@ -13,6 +13,7 @@
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
+# include <stdbool.h>
 // t_rgb contains the 3 colors of the rgb format.
 // It is for the ceiling and the floor arguments.
 typedef struct s_rgb
@@ -28,9 +29,9 @@ typedef struct s_rgb
 // It is the position of the player in game->map.map[x][y]
 typedef struct s_player
 {
-	int		pos_x;
-	int		pos_y;
-	char	orient;
+	//int		pos_x;
+	//int		pos_y;
+	//char	orient;
 }				t_player;
 
 // t_map contains all the informations about the map.
@@ -91,8 +92,20 @@ typedef struct s_win
 	int		h;
 }				t_win;
 
+typedef struct	s_mouv
+{
+	bool	go_straigth;
+	bool	go_backward;
+	bool	go_left;
+	bool	go_right;
+	int		rotate_dir;
+	bool	rotate_left;
+	bool	rotate_right;
+}			t_mouv;
+
 typedef struct s_ray
 {
+	double	rotation_angle;
 	double	posx;
 	double	posy;
 	double	dirx;
@@ -125,9 +138,11 @@ typedef struct s_game
 	t_rgb		floor;
 	t_rgb		ceil;
 	t_ray		ray;
+	t_mouv		mouv;
 	t_map		map;
 	t_parse		parse;
-	t_player	player;
+	char		orient;
+	//t_player	player;
 }				t_game;
 
 #endif

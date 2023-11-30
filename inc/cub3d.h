@@ -35,6 +35,7 @@
 # include <string.h>    // strerror
 # include <errno.h>     // perror
 
+
 // PARSING FUNCTIONS
 int		ft_parse(int ac, char **av, t_game *game);
 int		argument_check(int ac, char **av);
@@ -61,8 +62,10 @@ int		get_width_of_map(t_game *game);
 int		only_empty_lines_left(t_game *game, int i);
 
 // hook
-int	key_hook(int key, t_game *data);
+int	key_hook(int key, t_game *game);
 int	quit(t_game *game);
+int	key_down_hook(int key, t_game *game);
+int	key_up_hook(int key, t_game *game);
 
 // clean the structure
 void	free_array(char	**array);

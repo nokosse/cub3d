@@ -12,27 +12,32 @@
 
 #include "../inc/cub3d.h"
 
+t_img	load_texture(t_game *game, char *file)
+{
+	t_img img;
 
-
+	img.img = mlx_xpm_file_to_image(game->mlx, file,
+			&img.width, &img.height);
+	if (!img.img)
+		return (img);
+	img.addr = mlx_get_data_addr(img.img, \
+	&img.bits_per_pixel, &img.line_length, &img.endian);
+	return (img);
+}
 
 int	load_element(t_game *game)
 {
-	game->no.img = mlx_xpm_file_to_image(game->mlx, game->parse.no,
-			&game->no.width, &game->no.height);
-	if (!game->no.img)
-		return (perror("mlx_xpm_file_to_image"), 1);
-	game->so.img = mlx_xpm_file_to_image(game->mlx, game->parse.so,
-			&game->so.width, &game->so.height);
-	if (!game->so.img)
-		return (perror("mlx_xpm_file_to_image"), 1);
-	game->we.img = mlx_xpm_file_to_image(game->mlx, game->parse.we,
-			&game->we.width, &game->we.height);
-	if (!game->we.img)
-		return (perror("mlx_xpm_file_to_image"), 1);
-	game->ea.img = mlx_xpm_file_to_image(game->mlx, game->parse.ea,
-			&game->ea.width, &game->ea.height);
-	if (!game->ea.img)
-		return (perror("mlx_xpm_file_to_image"), 1);
+	game->no = load_texture(game, game->parse.no);
+	game->so = load_texture(game, game->parse.so);
+	game->we = load_texture(game, game->parse.we);
+	game->ea = load_texture(game, game->parse.ea);
+	if (!game->ea.img || !game->we.img || !game->so.img || !game->no.img)
+		return (perror("mlx_xpm_file_to_img"), 1);
+	game->image.img = mlx_new_image(game->mlx, game->win.w, game->win.h);
+	if (!game->image.img)
+		return (perror("mlx_new_img"), 1);
+	game->image.addr = mlx_get_data_addr(game->image.img, \
+	&game->image.bits_per_pixel, &game->image.line_length, &game->image.endian);
 	return (0);
 }
 
@@ -63,9 +68,13 @@ int	main(int ac, char **av)
 	game.win.mlx_w = mlx_new_window(game.mlx, game.win.w, game.win.h, "cub3d");
 	if (!game.win.mlx_w)
 		return (free_all(&game), 1);
-	printf("player posx = %d posy = %d et orient = %c\n", game.player.pos_x, game.player.pos_y, game.player.orient);
-	the_game(&game);
-	mlx_key_hook(game.win.mlx_w, &key_hook, &game);
+	printf("player posx = %lf posy = %lf et orient = %c\n", game.ray.posx, game.ray.posy, game.orient);
+	//the_game(&game);
+	//mlx_key_hook(game.win.mlx_w, &key_hook, &game);
+	game.ray.rotation_angle = PI / 2;
+	mlx_loop_hook(game.mlx, the_game, &game);
+	mlx_hook(game.win.mlx_w, 2, 1L << 0, key_down_hook, &game);
+	mlx_hook(game.win.mlx_w, 3, 1L << 1, key_up_hook, &game);
 	mlx_hook(game.win.mlx_w, 17, 1L << 0, quit, &game);
 	mlx_loop(game.mlx);
 	return (free_all(&game), 0);

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cub3d.h"
+#include "../../inc/cub3d.h"
 
 // Argument check will check if the argument seems valid.
 // Meaning it has to be :
@@ -19,6 +19,7 @@
 // - the map file has to have a character before the '.'
 // - the character before the '.' has to be alphanumeric
 // - this file has to exist.
+
 int	argument_check(int ac, char **av)
 {
 	int	fd;

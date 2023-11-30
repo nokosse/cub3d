@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cub3d.h"
+#include "../../inc/cub3d.h"
 
 // This function checks if we have a formar R,G,B for F and C
 int	check_string_valid(char *str)

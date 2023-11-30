@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cub3d.h"
+#include "../../inc/cub3d.h"
 
 // Checks if there is only ONE player in the map. (Which can be N, S, E or W)
 int	check_player_count(t_game *game)
@@ -30,11 +30,9 @@ int	check_player_count(t_game *game)
 				|| game->map.map[i][j] == 'E' || game->map.map[i][j] == 'W')
 			{
 				count++;
-				game->player.pos_x = i;
-				game->ray.posx = i;
-				game->player.pos_y = j;
-				game->ray.posy = j;
-				game->player.orient = game->map.map[i][j];
+				game->ray.posx = i + 0.5;
+				game->ray.posy = j + 0.5;
+				game->orient = game->map.map[i][j];
 			}
 		}
 		i++;
@@ -53,8 +51,8 @@ int	check_player_position(t_game *game)
 	int	x;
 	int	y;
 
-	x = game->player.pos_x;
-	y = game->player.pos_y;
+	x = game->ray.posx;
+	y = game->ray.posy;
 	if (x <= 0 || y <= 0)
 		return (1);
 	if (x + 1 >= game->map.map_height || y > game->map.map_width)

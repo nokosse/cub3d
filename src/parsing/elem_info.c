@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cub3d.h"
+#include "../../inc/cub3d.h"
 
 // This function will store the path in the right variable depending on the elem
 void	store_path(char *path, t_game *game, char *elem)
