@@ -6,7 +6,7 @@
 /*   By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:09:34 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/17 19:47:35 by kscordel         ###   ########.fr       */
+/*   Updated: 2023/12/02 13:23:17 by kscordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int	load_element(t_game *game)
 		return (perror("mlx_new_img"), 1);
 	game->image.addr = mlx_get_data_addr(game->image.img, \
 	&game->image.bits_per_pixel, &game->image.line_length, &game->image.endian);
+	game->image.width = game->win.w;
+	game->image.height = game->win.h;
 	return (0);
 }
 

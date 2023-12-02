@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:21:53 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/16 15:20:41 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/12/02 16:08:39 by kscordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,17 @@ void	free_all(t_game *game);
 // exec
 int the_game(t_game *game);
 
+// raycasting
+void	raycasting(t_game *game);
+
 // put_pixel
 int	makecolor(int t, int red, int green, int blue);
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
+
+//forme_geometric
+void draw_filled_circle(t_img *data, int xc, int yc, int radius, int color);
+void draw_line_dda(t_img *data, int x1, int y1, int x2, int y2, int color);
+
+
 
 #endif

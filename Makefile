@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+         #
+#    By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/07 12:36:43 by kvisouth          #+#    #+#              #
-#    Updated: 2023/11/15 16:25:35 by kvisouth         ###   ########.fr        #
+#    Updated: 2023/12/02 16:08:02 by kscordel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,9 @@ SRCS =	main.c \
 		hook.c \
 		clean_all.c \
 		put_pixel.c \
-		exec.c
+		exec.c \
+		raycasting.c \
+		forme_geometrique.c 
 		
 
 OBJS = $(addprefix obj/, $(notdir $(SRCS:.c=.o)))
