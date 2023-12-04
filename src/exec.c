@@ -1,5 +1,29 @@
 #include "../inc/cub3d.h"
 
+void	define_mid(t_game *game, double *x, double *y)
+{
+	*x = 0;
+	*y = 0;
+	if (game->ray.posy > (MINI_T / 2))
+		*y = game->ray.posy - (MINI_T / 2);
+	else
+		*y = 0;
+	if (game->ray.posx > (MINI_T / 2))
+		*x = game->ray.posx - (MINI_T / 2);
+	else
+		*x = 0;
+	if (MINI_T < game->map.map_height)
+	{
+		if (MINI_T + *y > game->map.map_height)
+		*y = game->map.map_height - MINI_T;
+	}
+	if (MINI_T < game->map.map_width)
+	{
+		if (MINI_T + *x > game->map.map_width)
+		*x = game->map.map_width - MINI_T;
+	}
+}
+
 void	update_move_perso(t_game *game)
 {
 	double	tmp;
@@ -11,51 +35,55 @@ void	update_move_perso(t_game *game)
 	if (game->mouv.go_straigth)
 	{
 		tmp = cos(game->ray.rotation_angle) * 0.1;
-		if (game->map.map[(int)game->ray.posx][(int)(game->ray.posy + tmp)] != '1')
-			game->ray.posy += tmp;
-		tmp = sin(game->ray.rotation_angle) * 0.1;
-		if (game->map.map[(int)(game->ray.posx + tmp)][(int)game->ray.posy] != '1')
+		if (game->map.map[(int)game->ray.posy][(int)(game->ray.posx + tmp)] != '1')
 			game->ray.posx += tmp;
+		tmp = sin(game->ray.rotation_angle) * 0.1;
+		if (game->map.map[(int)(game->ray.posy + tmp)][(int)game->ray.posx] != '1')
+			game->ray.posy += tmp;
 	}
 	if (game->mouv.go_backward)
 	{
 		tmp = cos(game->ray.rotation_angle) * -0.1;
-		if (game->map.map[(int)game->ray.posx][(int)(game->ray.posy + tmp)] != '1')
-			game->ray.posy += tmp;
-		tmp = sin(game->ray.rotation_angle) * -0.1;
-		if (game->map.map[(int)(game->ray.posx + tmp)][(int)game->ray.posy] != '1')
+		if (game->map.map[(int)game->ray.posy][(int)(game->ray.posx + tmp)] != '1')
 			game->ray.posx += tmp;
+		tmp = sin(game->ray.rotation_angle) * -0.1;
+		if (game->map.map[(int)(game->ray.posy + tmp)][(int)game->ray.posx] != '1')
+			game->ray.posy += tmp;
 	}
 	if (game->mouv.go_left)
 	{
 		tmp = cos(game->ray.rotation_angle - (PI / 2)) * 0.1 ;
-		if (game->map.map[(int)game->ray.posx][(int)(game->ray.posy + tmp)] != '1')
-			game->ray.posy += tmp;
-		tmp = sin(game->ray.rotation_angle - (PI / 2)) * 0.1;
-		if (game->map.map[(int)(game->ray.posx + tmp)][(int)game->ray.posy] != '1')
+		if (game->map.map[(int)game->ray.posy][(int)(game->ray.posx + tmp)] != '1')
 			game->ray.posx += tmp;
+		tmp = sin(game->ray.rotation_angle - (PI / 2)) * 0.1;
+		if (game->map.map[(int)(game->ray.posy + tmp)][(int)game->ray.posx] != '1')
+			game->ray.posy += tmp;
 	}
 	if (game->mouv.go_right)
 	{
 		tmp = cos(game->ray.rotation_angle + (PI / 2)) * 0.1 ;
-		if (game->map.map[(int)game->ray.posx][(int)(game->ray.posy + tmp)] != '1')
-			game->ray.posy += tmp;
-		tmp = sin(game->ray.rotation_angle + (PI / 2)) * 0.1;
-		if (game->map.map[(int)(game->ray.posx + tmp)][(int)game->ray.posy] != '1')
+		if (game->map.map[(int)game->ray.posy][(int)(game->ray.posx + tmp)] != '1')
 			game->ray.posx += tmp;
+		tmp = sin(game->ray.rotation_angle + (PI / 2)) * 0.1;
+		if (game->map.map[(int)(game->ray.posy + tmp)][(int)game->ray.posx] != '1')
+			game->ray.posy += tmp;
 	}
 }
 
 void draw_perso(t_game *game)
 {
-	double x;
-	double y;
-	
-	update_move_perso(game);
-	x = game->ray.posx * MINI_BLOCK;
-	y = game->ray.posy * MINI_BLOCK;
+	double	x;
+	double	y;
+	double	xs;
+	double	ys;
 
-	draw_filled_circle(&game->image, game->ray.posy * MINI_BLOCK, game->ray.posx * MINI_BLOCK, 5, MINI_PERSO_COLOR);
+	xs = 0;
+	ys = 0;
+	define_mid(game, &xs, &ys);
+	y = (game->ray.posx - xs) * MINI_BLOCK;
+	x = (game->ray.posy  - ys)* MINI_BLOCK;
+
+	draw_filled_circle(&game->image, y, x, 5, MINI_PERSO_COLOR);
 	draw_line_dda(&game->image, y, x, y + cos(game->ray.rotation_angle) * 200, x + sin(game->ray.rotation_angle) * 200, MINI_PERSO_COLOR);
 	raycasting(game);
 }
@@ -97,23 +125,29 @@ void	back_ground(t_game *game)
 		*(unsigned int *)(game->image.addr + i++ * 4) = floor;
 }
 
+
+
 void draw_map(t_game *game)
 {
 	int x;
 	int y;
+	double	xs;
+	double	ys;
 
 	x = 0;
 	y = 0;
-	back_ground(game);
-	while (game->map.map[y] && y * MINI_BLOCK + MINI_BLOCK < game->win.w)
+	define_mid(game, &xs, &ys);
+	x = xs;
+	y = ys;
+	while (game->map.map[y] && y - ys < MINI_T)
 	{
-		x = 0;
-		while (game->map.map[y][x] && x * MINI_BLOCK + MINI_BLOCK < game->win.h)
+		x = xs;
+		while (game->map.map[y][x] && x - xs < MINI_T)
 		{
 			if (game->map.map[y][x] == '1')
-				draw_cub(&(game->image), y * MINI_BLOCK, x * MINI_BLOCK, MINI_WALL_COLOR);
+				draw_cub(&(game->image), (y - ys) * MINI_BLOCK, (x - xs) * MINI_BLOCK, MINI_WALL_COLOR);
 			else if (game->map.map[y][x] == '0' || game->map.map[y][x] == 'N' || game->map.map[y][x] == 'S' || game->map.map[y][x] == 'E' || game->map.map[y][x] == 'W')
-				draw_cub(&game->image, y * MINI_BLOCK, x * MINI_BLOCK, MINI_FLOOR_COLOR);
+				draw_cub(&game->image, (y - ys) * MINI_BLOCK, (x - xs) * MINI_BLOCK, MINI_FLOOR_COLOR);
 			x++;
 		}
 		y++;
@@ -122,6 +156,8 @@ void draw_map(t_game *game)
 
 void two_dim(t_game *game)
 {
+	back_ground(game);
+	update_move_perso(game);
 	draw_map(game);
 	draw_perso(game);
 	mlx_put_image_to_window(game->mlx, game->win.mlx_w, game->image.img, 0, 0);
@@ -129,10 +165,6 @@ void two_dim(t_game *game)
 
 int the_game(t_game *game)
 {
-	/*game->ray.dirx = -1;
-	game->ray.diry = 0;
-	game->ray.planex = 0;
-	game->ray.planey = 0.66;*/
 	two_dim(game);
 	//printf("w = %d et h = %d\n",game->image.width, game->image.height);
 	return (0);

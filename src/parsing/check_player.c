@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_check_player.c                             :+:      :+:    :+:   */
+/*   check_player.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kvisouth <kvisouth@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 16:37:31 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/11/16 15:51:32 by kvisouth         ###   ########.fr       */
+/*   Updated: 2023/12/04 20:43:36 by kscordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int	check_player_count(t_game *game)
 				|| game->map.map[i][j] == 'E' || game->map.map[i][j] == 'W')
 			{
 				count++;
-				game->ray.posx = i + 0.5;
-				game->ray.posy = j + 0.5;
+				game->ray.posy = i + 0.5;
+				game->ray.posx = j + 0.5;
 				game->orient = game->map.map[i][j];
 			}
 		}
@@ -55,15 +55,15 @@ int	check_player_position(t_game *game)
 	y = game->ray.posy;
 	if (x <= 0 || y <= 0)
 		return (1);
-	if (x + 1 >= game->map.map_height || y > game->map.map_width)
+	if (y + 1 >= game->map.map_height || x > game->map.map_width)
 		return (1);
-	if (game->map.map[x - 1][y] != '1' && game->map.map[x - 1][y] != '0')
+	if (game->map.map[y - 1][x] != '1' && game->map.map[y - 1][x] != '0')
 		return (1);
-	if (game->map.map[x + 1][y] != '1' && game->map.map[x + 1][y] != '0')
+	if (game->map.map[y + 1][x] != '1' && game->map.map[y + 1][x] != '0')
 		return (1);
-	if (game->map.map[x][y - 1] != '1' && game->map.map[x][y - 1] != '0')
+	if (game->map.map[y][x - 1] != '1' && game->map.map[y][x - 1] != '0')
 		return (1);
-	if (game->map.map[x][y + 1] != '1' && game->map.map[x][y + 1] != '0')
+	if (game->map.map[y][x + 1] != '1' && game->map.map[y][x + 1] != '0')
 		return (1);
 	return (0);
 }

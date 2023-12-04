@@ -6,14 +6,20 @@ void	raycasting(t_game *game)
 	int		i;
 	int		x;
 	int		y;
+	double	xs;
+	double	ys;
 
-	x = game->ray.posx * MINI_BLOCK;
-	y = game->ray.posy * MINI_BLOCK;
+	xs = 0;
+	ys = 0;
+	define_mid(game, &xs, &ys);
+
+	y = (game->ray.posx - xs) * MINI_BLOCK;
+	x = (game->ray.posy - ys) * MINI_BLOCK;
 	ray_angle = game->ray.rotation_angle - (FOV / 2);
 	i = 0;
 	while (i < game->image.width / 10)
 	{
-		init();
+		//init();
 		
 
 		draw_line_dda(&game->image, y, x, y + cos(ray_angle) * 200, x + sin(ray_angle) * 200, MINI_PERSO_COLOR);

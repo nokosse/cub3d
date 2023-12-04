@@ -2,7 +2,7 @@
 
 int	key_down_hook(int key, t_game *game)
 {
-	printf("key = %d\n", key);
+	//printf("key = %d\n", key);
 	if (key == ECHAP)
 		quit(game);
 	if (key == K_LEFT)

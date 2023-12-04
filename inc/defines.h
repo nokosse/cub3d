@@ -6,7 +6,7 @@
 /*   By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:30:26 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/12/02 18:24:33 by kscordel         ###   ########.fr       */
+/*   Updated: 2023/12/04 21:13:24 by kscordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 //for minimap
 # define MINI_SIZE 360
-# define MINI_BLOCK 30
+# define MINI_BLOCK 10
+# define MINI_T		40
 # define MINI_PERSO 4
 # define MINI_WALL_COLOR 0xFF000066
 # define MINI_FLOOR_COLOR 0xFF99CCFF
