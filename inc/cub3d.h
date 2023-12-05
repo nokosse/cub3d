@@ -6,7 +6,7 @@
 /*   By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:21:53 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/12/04 21:46:45 by kscordel         ###   ########.fr       */
+/*   Updated: 2023/12/05 13:22:34 by kscordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,10 @@ void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
 //forme_geometric
 void draw_filled_circle(t_img *data, int xc, int yc, int radius, int color);
 void draw_line_dda(t_img *data, int x1, int y1, int x2, int y2, int color);
+
+//minimap
+void draw_map(t_game *game);
+void draw_perso(t_game *game);
 
 
 
