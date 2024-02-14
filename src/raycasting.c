@@ -5,47 +5,94 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/05 13:15:24 by kscordel          #+#    #+#             */
-/*   Updated: 2023/12/05 21:02:13 by kscordel         ###   ########.fr       */
+/*   Created: 2023/12/28 13:57:13 by kscordel          #+#    #+#             */
+/*   Updated: 2024/01/12 13:21:52 by kscordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-//tout ce raycasting est fait pour la minimap
-
-void	init(t_game *game, double ray_angle)
+void	init_raycasting(t_game *game, int x)
 {
-	ray_angle %= 2 * PI;
-	if (ray_angle < 0)
-		ray_angle = (2 * PI) + ray_angle;
-	
+	game->ray.mapx = (int)game->ray.posx;
+	game->ray.mapy = (int)game->ray.posy;
+	game->ray.camerax = 2 * x / (double)game->image.width - 1;
+	game->ray.raydirx = game->ray.dirx + game->ray.planex * game->ray.camerax;
+	game->ray.raydiry = game->ray.diry + game->ray.planey * game->ray.camerax;
+	if (game->ray.raydirx == 0)
+		game->ray.deltadistx = INT_MAX;
+	else
+		game->ray.deltadistx = fabs(1 / game->ray.raydirx);
+	if (game->ray.raydiry == 0)
+		game->ray.deltadisty = INT_MAX;
+	else
+		game->ray.deltadisty = fabs(1 / game->ray.raydiry);
+}
+
+void	calculate_step(t_game *game)
+{
+	if (game->ray.raydirx < 0)
+	{
+		game->ray.xstep = -1;
+		game->ray.sidedistx = (game->ray.posx - game->ray.mapx) \
+			* game->ray.deltadistx;
+	}
+	else
+	{
+		game->ray.xstep = 1;
+		game->ray.sidedistx = (game->ray.mapx + 1.0 - game->ray.posx) \
+			* game->ray.deltadistx;
+	}
+	if (game->ray.raydiry < 0)
+	{
+		game->ray.ystep = -1;
+		game->ray.sidedisty = (game->ray.posy - game->ray.mapy) \
+			* game->ray.deltadisty;
+	}
+	else
+	{
+		game->ray.ystep = 1;
+		game->ray.sidedisty = (game->ray.mapy + 1.0 - game->ray.posy) \
+			* game->ray.deltadisty;
+	}
+}
+
+void	dda_algorithme(t_game *game)
+{
+	while (true)
+	{
+		if (game->ray.sidedistx < game->ray.sidedisty)
+		{
+			game->ray.sidedistx += game->ray.deltadistx;
+			game->ray.mapx += game->ray.xstep;
+			game->ray.side = 0;
+		}
+		else
+		{
+			game->ray.sidedisty += game->ray.deltadisty;
+			game->ray.mapy += game->ray.ystep;
+			game->ray.side = 1;
+		}
+		if (game->map.map[game->ray.mapy][game->ray.mapx] == '1')
+			break ;
+	}
+	if (game->ray.side == 0)
+		game->ray.perpwalldist = game->ray.sidedistx - game->ray.deltadistx;
+	else
+		game->ray.perpwalldist = game->ray.sidedisty - game->ray.deltadisty;
 }
 
 void	raycasting(t_game *game)
 {
-	double	ray_angle;
-	int		i;
-	int		x;
-	int		y;
-	double	xs;
-	double	ys;
+	int	x;
 
-	xs = 0;
-	ys = 0;
-	define_mid(game, &xs, &ys);
-
-	y = (game->ray.posx - xs) * MINI_BLOCK;
-	x = (game->ray.posy - ys) * MINI_BLOCK;
-	ray_angle = game->ray.rotation_angle - (FOV / 2);
-	i = 0;
-	while (i < game->image.width / 10)
+	x = 0;
+	while (x < game->image.width)
 	{
-		init(game, ray_angle);
-		
-
-		draw_line_dda(&game->image, y, x, y + cos(ray_angle) * 200, x + sin(ray_angle) * 200, MINI_PERSO_COLOR);
-		ray_angle += FOV / game->image.width * 10;
-		i++;
-	}*/
+		init_raycasting(game, x);
+		calculate_step(game);
+		dda_algorithme(game);
+		randering(game, x);
+		x++;
+	}
 }

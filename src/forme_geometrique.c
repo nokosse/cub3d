@@ -1,88 +1,88 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   forme_geometrique.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/28 13:14:02 by kscordel          #+#    #+#             */
+/*   Updated: 2024/01/12 13:31:48 by kscordel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/cub3d.h"
 
-void draw_filled_circle(t_img *data, int xc, int yc, int radius, int color)
+void	circle_bis(t_img *data, int *centre, int *point, int color)
 {
-	int x = 0, y = radius;
-	int d = 3 - 2 * radius;
+	int	i;
 
-	while (x <= y)
+	i = centre[X] - point[X] - 1;
+	while (++i <= centre[X] + point[X])
 	{
-		// Dessine la ligne horizontale entre les points symétriques
-		for (int i = xc - x; i <= xc + x; i++)
-		{
-			my_mlx_pixel_put(data, i, yc + y, color);
-			my_mlx_pixel_put(data, i, yc - y, color);
-		}
+		my_mlx_pixel_put(data, i, centre[Y] + point[Y], color);
+		my_mlx_pixel_put(data, i, centre[Y] - point[Y], color);
+	}
+	i = centre[X] - point[Y] - 1;
+	while (++i <= centre[X] + point[Y])
+	{
+		my_mlx_pixel_put(data, i, centre[Y] + point[X], color);
+		my_mlx_pixel_put(data, i, centre[Y] - point[X], color);
+	}
+}
 
-		// Dessine la ligne horizontale entre les points symétriques
-		for (int i = xc - y; i <= xc + y; i++)
-		{
-			my_mlx_pixel_put(data, i, yc + x, color);
-			my_mlx_pixel_put(data, i, yc - x, color);
-		}
+void	draw_filled_circle(t_img *data, int centre[2], int radius, int color)
+{
+	int	point[2];
+	int	d;
 
-		x++;
-
+	point[X] = 0;
+	point[Y] = radius;
+	d = 3 - 2 * radius;
+	while (point[X] <= point[Y])
+	{
+		circle_bis(data, centre, point, color);
+		point[X]++;
 		if (d > 0)
 		{
-			y--;
-			d = d + 4 * (x - y) + 10;
+			point[Y]--;
+			d = d + 4 * (point[X] - point[Y]) + 10;
 		}
 		else
-		{
-			d = d + 4 * x + 6;
-		}
+			d = d + 4 * point[X] + 6;
 	}
 }
 
-void draw_line_dda(t_img *data, int x1, int y1, int x2, int y2, int color)
+void	draw_line_bis(t_img *data, t_geo geo, int steps, int color)
 {
-	int dx = x2 - x1;
-	int dy = y2 - y1;
+	int	i;
 
-	int steps = abs(dx) > abs(dy) ? abs(dx) : abs(dy);
-
-	float xIncrement = (float)dx / (float)steps;
-	float yIncrement = (float)dy / (float)steps;
-
-	float x = x1, y = y1;
-
-	for (int i = 0; i <= steps; i++)
+	i = -1;
+	while (++i <= steps)
 	{
-		my_mlx_pixel_put(data, round(x), round(y), color);
-		x += xIncrement;
-		y += yIncrement;
+		if (check_color_pix(data, (int)geo.point[X], (int)geo.point[Y], \
+			MINI_FLOOR_COLOR))
+			break ;
+		my_mlx_pixel_put(data, (int)(geo.point[X]), (int)geo.point[Y], color);
+		geo.point[X] += geo.incremente[X];
+		geo.point[Y] += geo.incremente[Y];
 	}
 }
-/*
-void draw_line_dda(t_img *data, int *p1, int *p2, int color)
+
+void	draw_line_dda(t_img *data, int p1[2], int p2[2], int color)
 {
-	int 	dx;
-	int 	dy;
 	int		d[2];
 	int		steps;
-	float	xIncrement;
-	float	yIncrement;
-	float	Increment[2];
-	float	x;
-	float	y;
-	int		i;
+	t_geo	geo;
 
-	dx = p2[Y] - p1[X];
-	dy = p2[Y] - p1[Y];
-	steps = abs(dx) > abs(dy) ? abs(dx) : abs(dy);
-
-	xIncrement = (float)dx / (float)steps;
-	yIncrement = (float)dy / (float)steps;
-
-	x = p1[X];
-	y = p1[Y];
-
-	while (i <= steps)
-	{
-		my_mlx_pixel_put(data, round(x), round(y), color);
-		x += xIncrement;
-		y += yIncrement;
-		i++;
-	}
-}*/
+	d[X] = p2[X] - p1[X];
+	d[Y] = p2[Y] - p1[Y];
+	if (abs(d[X]) > abs(d[Y]))
+		steps = abs(d[X]);
+	else
+		steps = abs(d[Y]);
+	geo.incremente[X] = (float)d[X] / (float)steps;
+	geo.incremente[Y] = (float)d[Y] / (float)steps;
+	geo.point[X] = p1[X];
+	geo.point[Y] = p1[Y];
+	draw_line_bis(data, geo, steps, color);
+}

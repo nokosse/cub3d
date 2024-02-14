@@ -6,7 +6,7 @@
 /*   By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:21:53 by kvisouth          #+#    #+#             */
-/*   Updated: 2023/12/05 13:22:34 by kscordel         ###   ########.fr       */
+/*   Updated: 2024/01/12 15:32:31 by kscordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@
 // all the lib math (-lm man man 3 math)
 // all the mlx functions
 
-# include "../libft/inc/libft.h"
-# include "../libft/inc/get_next_line.h"
-# include "../libft/inc/ft_printf.h"
+# include "../libft/libft.h"
 # include "../minilibx-linux/mlx.h"
 # include "defines.h"
 # include "structs.h"
@@ -34,7 +32,9 @@
 # include <fcntl.h>
 # include <string.h>    // strerror
 # include <errno.h>     // perror
+# include <limits.h>
 
+# include <sys/time.h>
 
 // PARSING FUNCTIONS
 int		ft_parse(int ac, char **av, t_game *game);
@@ -45,8 +45,6 @@ void	skip_lines_end(int fd);
 void	skip_spaces(char *line, int *i);
 int		parse_rgb(char *str, t_game *game, char *elem);
 void	set_line(char *elem, t_game *game, int i);
-
-// void	init_t_parse(t_game *game);
 
 int		check_empty_lines(t_game *game);
 int		check_correct_paths(t_game *game);
@@ -61,11 +59,8 @@ int		get_map_size(t_game *game, int i);
 int		get_width_of_map(t_game *game);
 int		only_empty_lines_left(t_game *game, int i);
 
-// hook
-int	key_hook(int key, t_game *game);
-int	quit(t_game *game);
-int	key_down_hook(int key, t_game *game);
-int	key_up_hook(int key, t_game *game);
+void	print_tab(char **tab);
+char	*dup_str_len(const char *s, int len);
 
 // clean the structure
 void	free_array(char	**array);
@@ -74,24 +69,37 @@ void	free_mlx(t_game *game);
 void	free_all(t_game *game);
 
 // exec
-int the_game(t_game *game);
-void	define_mid(t_game *game, double *x, double *y);
+int		the_game(t_game *game);
+
+// hook
+int		key_hook(int key, t_game *game);
+int		quit(t_game *game);
+int		key_down_hook(int key, t_game *game);
+int		key_up_hook(int key, t_game *game);
+void	update_move_perso(t_game *game);
+
+// rotate_player
+void	rotate_left(t_game *game);
+void	rotate_right(t_game *game);
+void	init_dir(t_game *game);
 
 // raycasting
 void	raycasting(t_game *game);
+void	randering(t_game *game, int x);
 
 // put_pixel
-int	makecolor(int t, int red, int green, int blue);
+int		makecolor(int t, int red, int green, int blue);
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
-
-//forme_geometric
-void draw_filled_circle(t_img *data, int xc, int yc, int radius, int color);
-void draw_line_dda(t_img *data, int x1, int y1, int x2, int y2, int color);
+int		check_color_pix(t_img *data, int x, int y, int color);
 
 //minimap
-void draw_map(t_game *game);
-void draw_perso(t_game *game);
+void	define_mid(t_game *game, double *x, double *y);
+void	draw_map(t_game *game);
+void	draw_perso(t_game *game);
+void	raycasting_2d(t_game *game);
 
-
+// forme_geometric
+void	draw_filled_circle(t_img *data, int centre[2], int radius, int color);
+void	draw_line_dda(t_img *data, int p1[2], int p2[2], int color);
 
 #endif
